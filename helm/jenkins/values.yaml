@@ -249,7 +249,7 @@ controller:
     # Ignored if securityRealm is defined in controller.JCasC.configScripts and
     # ignored if controller.enableXmlConfig=true as controller.securityRealm takes precedence
 
-  credentials: |-
+    credentials: |-
      system:
      domainCredentials:
       - credentials:
@@ -284,7 +284,7 @@ controller:
           scope: GLOBAL
           secret: "{AQAAABAAAAAQTzHSck/+/63l4z9wNWXyVXJHwPtP7RowYo5CyqW1J+4=}"
 
-  securityRealm: |-
+    securityRealm: |-
       local:
         allowsSignup: false
         enableCaptcha: false
@@ -293,7 +293,7 @@ controller:
           name: "Jenkins Admin"
           password: "${chart-admin-password}"
     # Ignored if authorizationStrategy is defined in controller.JCasC.configScripts
-  authorizationStrategy: |-
+    authorizationStrategy: |-
       loggedInUsersCanDoAnything:
         allowAnonymousRead: false
   # Optionally specify additional init-containers
