@@ -144,8 +144,8 @@ controller:
         port: http
       periodSeconds: 10
       timeoutSeconds: 5
-  agentListenerPort: 32767
-  agentListenerHostPort: 50000
+  agentListenerPort: 50000
+  agentListenerHostPort:
   disabledAgentProtocols:
     - JNLP-connect
     - JNLP2-connect
@@ -155,7 +155,7 @@ controller:
       proxyCompatability: true
   # Kubernetes service type for the JNLP agent service
   # agentListenerServiceType is the Kubernetes Service type for the JNLP agent service,
-  # either 'LoadBalancer', 'NodePort', or 'ClusterIP'
+  # either 'LoadBalancer', 'ClusterIP', or 'ClusterIP'
   # Note if you set this to 'LoadBalancer', you *must* define annotations to secure it. By default
   # this will be an external load balancer and allowing inbound 0.0.0.0/0, a HUGE
   # security risk:  https://github.com/kubernetes/charts/issues/1341
