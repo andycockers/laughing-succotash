@@ -302,56 +302,26 @@ controller:
   #   imagePullPolicy: Always
   #   command: [ "uname", "-a" ]
 
-  clouds:
-  - kubernetes:
+  clouds: |-
+   - kubernetes:
       containerCap: 10
       containerCapStr: "10"
-      credentialsId: "kubeconfig"
       defaultsProviderTemplate: "inbound-agent-arm7"
-      jenkinsUrl: "http://192.168.0.22:32532"
+      jenkinsTunnel: "helm-jenkins-agent:50000"
+      jenkinsUrl: "http://helm-jenkins:8080"
       name: "kubernetes"
+      namespace: "jenkins-helm"
+      podLabels:
+      - key: "jenkins/helm-jenkins-jenkins-agent"
+        value: "true"
+      serverUrl: "https://kubernetes.default"
       templates:
       - containers:
-        - args: "cat"
-          command: "/bin/sh -c"
+        - args: "^${computer.jnlpmac} ^${computer.name}"
           envVars:
           - envVar:
-              key: "ANSIBLE_HOST_KEY_CHECKING"
-              value: "False"
-          image: "wolfman.crabdance.com/worker-arm-buster"
-          livenessProbe:
-            failureThreshold: 0
-            initialDelaySeconds: 0
-            periodSeconds: 0
-            successThreshold: 0
-            timeoutSeconds: 0
-          name: "worker"
-          ttyEnabled: true
-          workingDir: "/home/jenkins/agent"
-        id: "e73c209e-5318-4255-ad17-c65372f6678e"
-        label: "worker"
-        name: "worker"
-        yamlMergeStrategy: "override"
-      - containers:
-        - alwaysPullImage: true
-          args: "cat"
-          command: "/bin/sh -c"
-          image: "wolfman.crabdance.com/terratest-arm-buster"
-          livenessProbe:
-            failureThreshold: 0
-            initialDelaySeconds: 0
-            periodSeconds: 0
-            successThreshold: 0
-            timeoutSeconds: 0
-          name: "terratest"
-          ttyEnabled: true
-          workingDir: "/home/jenkins/agent"
-        id: "04a8f275-7649-433c-863a-e609350fd5e1"
-        label: "terratest"
-        name: "terratest"
-        yamlMergeStrategy: "override"
-      - containers:
-        - args: "^${computer.jnlpmac} ^${computer.name}"
+              key: "JENKINS_URL"
+              value: "http://helm-jenkins.jenkins-helm.svc.cluster.local:8080/"
           image: "wolfman.crabdance.com/jenkins-inbound-agent-arm7"
           livenessProbe:
             failureThreshold: 0
@@ -360,13 +330,19 @@ controller:
             successThreshold: 0
             timeoutSeconds: 0
           name: "jnlp"
+          resourceLimitCpu: "512m"
+          resourceLimitMemory: "512Mi"
+          resourceRequestCpu: "512m"
+          resourceRequestMemory: "512Mi"
           ttyEnabled: true
           workingDir: "/home/jenkins/agent"
-        id: "f7304dc6-71c8-4d6f-830a-3c9ad29ca716"
+        id: "849e6dc2-2f8f-46af-bab5-a6f5ab7ba3fb"
         label: "default-java"
         name: "inbound-agent-arm7"
+        nodeUsageMode: NORMAL
+        podRetention: "never"
+        serviceAccount: "default"
         yamlMergeStrategy: "override"
-      webSocket: true
 
   sidecars:
     configAutoReload:
