@@ -145,7 +145,7 @@ controller:
       periodSeconds: 10
       timeoutSeconds: 5
   agentListenerPort: 50000
-  agentListenerHostPort: 50000
+  agentListenerHostPort: 32767
   disabledAgentProtocols:
     - JNLP-connect
     - JNLP2-connect
