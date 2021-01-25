@@ -100,7 +100,7 @@ controller:
   #   runAsNonRoot: true
   #   supplementalGroups: [1000]
   #   # capabilities: {}
-  servicePort: 8080
+  servicePort: 32767
   targetPort: 8080
   # For minikube, set this to NodePort, elsewhere use LoadBalancer
   # Use ClusterIP if your setup includes ingress controller
@@ -145,7 +145,7 @@ controller:
       periodSeconds: 10
       timeoutSeconds: 5
   agentListenerPort: 50000
-  agentListenerHostPort:
+  agentListenerHostPort: 32766
   disabledAgentProtocols:
     - JNLP-connect
     - JNLP2-connect
