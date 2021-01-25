@@ -249,7 +249,7 @@ controller:
     # Ignored if securityRealm is defined in controller.JCasC.configScripts and
     # ignored if controller.enableXmlConfig=true as controller.securityRealm takes precedence
 
-    credentials: |-
+  credentials: |-
      system:
      domainCredentials:
       - credentials:
