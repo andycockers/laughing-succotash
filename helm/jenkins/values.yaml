@@ -847,7 +847,7 @@ backup:
   #    - NET_RAW
 checkDeprecation: true
 
-credentials:
+credentials: |-
   system:
     domainCredentials:
     - credentials:
