@@ -506,9 +506,9 @@ agent:
   kubernetesReadTimeout: 15
   maxRequestsPerHostStr: "32"
   namespace:
-  image: "jenkins/inbound-agent"
-  tag: "4.6-1"
-  workingDir: "/home/jenkins"
+  image: "wolfman.crabdance.com/jenkins-inbound-agent-arm7"
+  tag: "latest"
+  workingDir: "/home/jenkins/agent"
   customJenkinsLabels: []
   # name of the secret to be used for image pulling
   imagePullSecretName:
@@ -552,10 +552,10 @@ agent:
   #   claimName: mypvc
   #   mountPath: /var/myapp/mypvc
   #   readOnly: false
-  # - type: Secret
-  #   defaultMode: "600"
-  #   mountPath: /var/myapp/mysecret
-  #   secretName: mysecret
+   - type: Secret
+     defaultMode: "600"
+     mountPath: /tmp/jenkins-test-project.json
+     secretName: gcp-service-account
   # Pod-wide environment, these vars are visible to any container in the agent pod
 
   # You can define the workspaceVolume that you want to mount for this container
@@ -578,8 +578,8 @@ agent:
   #   readOnly: false
   # Pod-wide environment, these vars are visible to any container in the agent pod
   envVars: []
-  # - name: PATH
-  #   value: /usr/local/bin
+   - name: GOOGLE_APPLICATION_CREDENTIALS
+     value: /tmp/jenkins-test-project.json
   nodeSelector: {}
   # Key Value selectors. Ex:
   # jenkins-agent: v1
