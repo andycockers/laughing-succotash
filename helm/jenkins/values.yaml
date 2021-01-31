@@ -552,11 +552,11 @@ agent:
   #   claimName: mypvc
   #   mountPath: /var/myapp/mypvc
   #   readOnly: false
-   - type: Secret
-     defaultMode: "600"
-     mountPath: /tmp/jenkins-test-project.json
-     secretName: gcp-service-account
-     key: jenkins-test-project.json
+  # - type: Secret
+  #   defaultMode: "600"
+  #   mountPath: /tmp/jenkins-test-project.json
+  #   secretName: gcp-service-account
+  #   key: jenkins-test-project.json
   # Pod-wide environment, these vars are visible to any container in the agent pod
 
   # You can define the workspaceVolume that you want to mount for this container
@@ -580,7 +580,10 @@ agent:
   # Pod-wide environment, these vars are visible to any container in the agent pod
   envVars: []
    - name: GOOGLE_APPLICATION_CREDENTIALS
-     value: /tmp/jenkins-test-project.json
+     valueFrom:
+       secretKeyRef:
+         name: gcp-service-account
+         key: jenkins-test-project.json
   nodeSelector: {}
   # Key Value selectors. Ex:
   # jenkins-agent: v1
