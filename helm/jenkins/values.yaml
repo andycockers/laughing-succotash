@@ -207,6 +207,7 @@ controller:
     - terraform:1.0.10
     - plain-credentials:1.7
     - credentials:2.3.14
+    - gcp-secrets-manager-credentials-provider:0.2.6
 
   # List of plugins to install in addition to those listed in controller.installPlugins
   additionalPlugins: []
@@ -533,7 +534,7 @@ agent:
   # Allowed types are: ConfigMap, EmptyDir, HostPath, Nfs, PVC, Secret
   # Configure the attributes as they appear in the corresponding Java class for that type
   # https://github.com/jenkinsci/kubernetes-plugin/tree/master/src/main/java/org/csanchez/jenkins/plugins/kubernetes/volumes
-  volumes: []
+  volumes:
   # - type: ConfigMap
   #   configMapName: myconfigmap
   #   mountPath: /var/myapp/myconfigmap
@@ -541,8 +542,8 @@ agent:
   #   mountPath: /var/myapp/myemptydir
   #   memory: false
   # - type: HostPath
-  #   hostPath: /var/lib/containers
-  #   mountPath: /var/myapp/myhostpath
+  #   hostPath: /tmp
+  #   mountPath: /tmp
   # - type: Nfs
   #   mountPath: /var/myapp/mynfs
   #   readOnly: false
@@ -556,20 +557,19 @@ agent:
   #   defaultMode: "600"
   #   mountPath: /tmp/jenkins-test-project.json
   #   secretName: gcp-service-account
-  #   key: jenkins-test-project.json
   # Pod-wide environment, these vars are visible to any container in the agent pod
 
   # You can define the workspaceVolume that you want to mount for this container
   # Allowed types are: DynamicPVC, EmptyDir, HostPath, Nfs, PVC
   # Configure the attributes as they appear in the corresponding Java class for that type
   # https://github.com/jenkinsci/kubernetes-plugin/tree/master/src/main/java/org/csanchez/jenkins/plugins/kubernetes/volumes/workspace
-  workspaceVolume: {}
+  workspaceVolume:
   # - type: DynamicPVC
   #   configMapName: myconfigmap
   # - type: EmptyDir
   #   memory: false
   # - type: HostPath
-  #   hostPath: /var/lib/containers
+  #   hostPath: /tmp
   # - type: Nfs
   #   readOnly: false
   #   serverAddress: "192.0.2.0"
@@ -578,12 +578,9 @@ agent:
   #   claimName: mypvc
   #   readOnly: false
   # Pod-wide environment, these vars are visible to any container in the agent pod
-  envVars: []
-   - name: GOOGLE_APPLICATION_CREDENTIALS
-     valueFrom:
-       secretKeyRef:
-         name: gcp-service-account
-         key: jenkins-test-project.json
+  envVars:
+  - name: GOOGLE_APPLICATION_CREDENTIALS
+    value: "/tmp/jenkins-test-project.json"
   nodeSelector: {}
   # Key Value selectors. Ex:
   # jenkins-agent: v1
@@ -763,10 +760,10 @@ backup:
    # jenkinsgcp:
   ## Use this key for GCP credentials
      # gcpcredentials: credentials.json
-  env: []
+  env:
   # Example environment variable required for AWS credentials chain
-  # - name: "AWS_REGION"
-  #   value: "us-east-1"
+   - name: "GOOGLE_APPLICATION_CREDENTIALS"
+     value: "/tmp/jenkins-test-project.json"
   resources:
     requests:
       memory: 1Gi
