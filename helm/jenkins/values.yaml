@@ -709,7 +709,7 @@ persistence:
   ##   GKE, AWS & OpenStack)
   ##
   storageClass:
-  existingClaim: jenkins-pv
+  existingClaim: jenkins-pvc
   annotations: {}
   accessMode: "ReadWriteOnce"
   size: "8Gi"
