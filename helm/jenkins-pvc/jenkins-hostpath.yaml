@@ -4,11 +4,11 @@ metadata:
   name: jenkins-pv
   namespace: jenkins-helm
 spec:
-  storageClassName: jenkins-pv
+  capacity: 
+    storage: 8Gi
   accessModes:
-  - ReadWriteOnce
-  capacity:
-    storage: 20Gi
+    - ReadWriteOnce
+    - ReadOnlyMany
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /data/jenkins-volume/
+    path: /data/jenkins-volume
