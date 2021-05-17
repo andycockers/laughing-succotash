@@ -708,8 +708,7 @@ persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  storageClass:
-  existingClaim: jenkins-pvc
+  storageClass: jenkins-pvc
   annotations: {}
   accessMode: "ReadWriteOnce"
   size: "8Gi"
