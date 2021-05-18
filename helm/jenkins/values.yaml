@@ -191,6 +191,7 @@ controller:
 
   # List of plugins to be install during Jenkins controller start
   installPlugins:
+<<<<<<< HEAD
     #- kubernetes:1.28.6
     #- workflow-aggregator:2.6
     #- git:4.5.2
@@ -208,6 +209,29 @@ controller:
     #- plain-credentials:1.7
     #- credentials:2.3.14
     #- gcp-secrets-manager-credentials-provider:0.2.6
+=======
+    - kubernetes:1.28.6
+    - workflow-aggregator:2.6
+    - git:4.5.2
+    - configuration-as-code:1.47
+    - ansible:1.1
+    - command-launcher:1.5
+    - docker-commons:1.17
+    - google-oauth-plugin:1.0.2
+    - job-dsl:1.77
+    - jdk-tool:1.4
+    - pipeline-utility-steps:2.6.1
+    - pipeline-github:2.7
+    - swarm:3.24
+    - terraform:1.0.10
+    - plain-credentials:1.7
+    - credentials:2.3.14
+    - gcp-secrets-manager-credentials-provider:0.2.6
+    - ssh-credentials:1.18.2
+    - credentials-binding:1.24
+    - pipeline-model-extensions:1.8.4
+    - docker-commons:1.17
+>>>>>>> 883aa04a471827f8bcb702e605b163cf67753e0c
 
   # List of plugins to install in addition to those listed in controller.installPlugins
   additionalPlugins: []

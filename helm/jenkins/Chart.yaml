@@ -1,8 +1,8 @@
 apiVersion: v2
 name: jenkins
 home: https://jenkins.io/
-version: 0.0.20
-appVersion: 2.276
+version: 0.0.22
+appVersion: 2.277.4
 description: Jenkins - Build great things at any scale! The leading open source automation server, Jenkins provides hundreds of plugins to support building, deploying and automating any project.
 sources:
 - https://github.com/jenkinsci/jenkins
