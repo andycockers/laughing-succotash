@@ -2,7 +2,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: jenkins-pvc
-  namespace: jenkins-helm
+  namespace: jenkins
 spec:
   storageClassName: ""
   accessModes:
