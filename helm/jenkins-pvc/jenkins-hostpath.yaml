@@ -11,4 +11,4 @@ spec:
     - ReadOnlyMany
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /data/jenkins-volume
+    path: /data/jenkins_helm
