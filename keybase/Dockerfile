@@ -15,8 +15,8 @@ ENV HOME /home/keybase
 
 WORKDIR /home/keybase
 
-RUN curl -O https://prerelease.keybase.io/keybase_amd64.deb
-RUN sudo dpkg -i keybase_amd64.deb
+RUN curl -O https://prerelease.keybase.io/keybase_arm64.deb
+RUN sudo dpkg -i keybase_arm64.deb
 RUN sudo apt-get install -f
 RUN run_keybase
 RUN mkdir $HOME/.config
