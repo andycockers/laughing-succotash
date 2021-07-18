@@ -1,8 +1,6 @@
 ---
 image: calmmopey/arnie
-tag: 1.0.0
+tag: 0.0.2
 name: arnie-helm
 namespace: arnie-helm
 config_path: /data/arnie
-command: ["/bin/bash"]
-args: ["-c", "keybase chat api-listen | tee -a log.txt | while read EVENT; do arnie <<<'${EVENT}' | tee -a log.txt | keybase chat api done"]
