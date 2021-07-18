@@ -1,11 +1,16 @@
-FROM debian:buster
+FROM ubuntu:groovy
 
 RUN apt-get update && apt-get install -y \
     gnupg \
     curl \
     libappindicator1 \
     fuse \
-    sudo
+    sudo \
+    zip \
+    unzip
+
+COPY keybase.zip /usr/bin/keybase.zip
+RUN cd /usr/bin && unzip keybase.zip
 
 RUN groupadd -g 1000 keybase \
     && useradd --create-home -d /home/keybase -g keybase -u 1000 keybase
@@ -15,10 +20,6 @@ ENV HOME /home/keybase
 
 WORKDIR /home/keybase
 
-RUN curl -O https://prerelease.keybase.io/keybase_arm64.deb
-RUN sudo dpkg -i keybase_arm64.deb
-RUN sudo apt-get install -f
-RUN run_keybase
 RUN mkdir $HOME/.config
 
-ENTRYPOINT ["keybase"]
+#ENTRYPOINT ["keybase"]
