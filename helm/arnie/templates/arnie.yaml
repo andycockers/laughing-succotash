@@ -15,8 +15,8 @@ spec:
       containers:
       - name: {{ .Values.name }}
         image: {{ .Values.image }}:{{ .Values.tag }}
-        command: [{{ .Values.command }}]
-        args: [{{ .Values.args }}]
+        command: {{ .Values.command }}
+        args: {{ .Values.args }}
         volumeMounts:
         - name: config
           mountPath: /home/keybase/.config/arnie
