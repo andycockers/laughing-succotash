@@ -4,4 +4,4 @@ name: arnie-helm
 namespace: arnie-helm
 config_path: /data/arnie
 command: ["/bin/bash"]
-args: ["keybase chat api-listen | tee -a log.txt | while read EVENT; do arnie <<<"${EVENT}" | tee -a log.txt | keybase chat api done"]
+args: ["-c", "keybase chat api-listen | tee -a log.txt | while read EVENT; do arnie <<<"${EVENT}" | tee -a log.txt | keybase chat api done"]
