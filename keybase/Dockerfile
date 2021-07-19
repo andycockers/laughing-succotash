@@ -1,4 +1,4 @@
-FROM ubuntu:hirstute
+FROM ubuntu:hirsute
 
 RUN apt-get update && apt-get install -y \
     gnupg \
