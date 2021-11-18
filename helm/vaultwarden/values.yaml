@@ -1,0 +1,10 @@
+---
+image: vaultwarden/server
+tag: 1.23.0
+name: vaultwarden
+namespace: vaultwarden
+data_path: /data/vw
+host: vaultwarden.crabdance.com
+secret: vaultwarden-tls
+ingress: "nginx"
+cert_manager: "letsencrypt-prod"
