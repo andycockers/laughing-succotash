@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  labels:
+    app: {{ .Values.label }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod_label: {{ .Values.pod_label }}
+  template:
+    metadata:
+      labels:
+        pod_label: {{ .Values.pod_label }}
+    spec:
+      containers:
+      - name: mariadb
+        image: mariadb:latest
+        args:
+          - --transaction-isolation=READ-COMMITTED 
+          - --binlog-format=ROW 
+          - --innodb-file-per-table=1 
+          - --skip-innodb-read-only-compressed
+        env:
+        - name: MYSQL_DATABASE
+          value: nextcloud
+        envFrom:
+        - secretRef:
+            name: nextcloud-db-secret
+        volumeMounts:
+        - name: db-storage
+          mountPath: /var/lib/mysql
+          subPath: mysql-data
+      volumes:
+      - name: db-storage
+        persistentVolumeClaim:
+          claimName: podpvc

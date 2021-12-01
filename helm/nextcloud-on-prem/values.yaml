@@ -1,0 +1,10 @@
+name: nextcloud-server
+label: nextcloud
+pod_label: nextcloud-server-pod
+image: nextcloud
+tag: 22.2-apache
+namespace: nc
+host: cockers-nextcloud.crabdance.com
+secret: nextcloud-tls
+ingress: "nginx"
+cert_manager: "letsencrypt-prod"
