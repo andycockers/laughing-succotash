@@ -6,7 +6,7 @@ metadata:
     app: {{ .Values.label }}
 spec:
   selector:
-    pod-label: {{ .Values.pod-label }}
+    pod_label: {{ .Values.pod_label }}
   ports:
   - protocol: TCP
     port: 3306
