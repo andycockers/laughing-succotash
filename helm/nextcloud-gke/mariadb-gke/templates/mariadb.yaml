@@ -24,9 +24,9 @@ spec:
         - secretRef:
             name: nextcloud-db-secret
         volumeMounts:
-        -name: db-storage
-        mountPath: /var/lib/mysql
-        subPath: mysql-data
+        - name: db-storage
+          mountPath: /var/lib/mysql
+          subPath: mysql-data
       volumes:
       - name: db-storage
         persistentVolumeClaim:
