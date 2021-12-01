@@ -1,0 +1,9 @@
+---
+image: vaultwarden/server
+tag: 1.23.0
+name: vaultwarden
+namespace: vw
+host: gkevault.crabdance.com
+secret: vaultwarden-tls
+ingress: "nginx"
+cert_manager: "letsencrypt-prod"
