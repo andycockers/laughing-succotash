@@ -17,6 +17,11 @@ spec:
       containers:
       - name: mariadb
         image: mariadb:latest
+        args:
+          - --transaction-isolation=READ-COMMITTED 
+          - --binlog-format=ROW 
+          - --innodb-file-per-table=1 
+          - --skip-innodb-read-only-compressed
         env:
         - name: MYSQL_DATABASE
           value: nextcloud
