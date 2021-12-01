@@ -8,11 +8,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      pod_label: {{ .Vales.pod_label }}
+      pod_label: {{ .Values.pod_label }}
   template:
     metadata:
       labels:
-        pod_label: {{ .Vales.pod_label }}
+        pod_label: {{ .Values.pod_label }}
     spec:
       containers:
       - name: mariadb
