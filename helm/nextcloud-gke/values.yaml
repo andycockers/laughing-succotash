@@ -4,7 +4,7 @@ pod_label: nextcloud-server-pod
 image: nextcloud
 tag: 22.2-apache
 namespace: nc
-host: nextcloud.crabdance.com
+host: nextcloud-cockers.crabdance.com
 secret: nextcloud-tls
 ingress: "nginx"
 cert_manager: "letsencrypt-prod"
