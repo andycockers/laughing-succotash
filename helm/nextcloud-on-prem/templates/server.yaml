@@ -23,5 +23,5 @@ spec:
           subPath: server-data
       volumes:
       - name: server-storage
-        persistentVolumeClaim:
-          claimName: podpvc
+        hostPath:
+          path: {{ .Values.storage_path }}

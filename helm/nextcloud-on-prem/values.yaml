@@ -8,3 +8,4 @@ host: cockers-nextcloud.crabdance.com
 secret: nextcloud-tls
 ingress: "nginx"
 cert_manager: "letsencrypt-prod"
+storage_path: /data/nextcloud
