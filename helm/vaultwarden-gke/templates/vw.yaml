@@ -40,7 +40,7 @@ parameters:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: popvc
+  name: podpvc
 spec:
   accessModes:
   - ReadWriteOnce
