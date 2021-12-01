@@ -34,5 +34,5 @@ spec:
           subPath: mysql-data
       volumes:
       - name: db-storage
-        persistentVolumeClaim:
-          claimName: podpvc
+        hostPath:
+          path: {{ .Values.storage_path }}
