@@ -1,0 +1,4 @@
+---
+name: nextcloud-db
+label: nextcloud
+pod-label: nextcloud-db-pod
