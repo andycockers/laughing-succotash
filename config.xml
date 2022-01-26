@@ -1,71 +1,126 @@
 <?xml version='1.1' encoding='UTF-8'?>
-<project>
-  <actions/>
-  <description></description>
-  <keepDependencies>false</keepDependencies>
-  <properties>
-    <jenkins.model.BuildDiscarderProperty>
-      <strategy class="hudson.tasks.LogRotator">
-        <daysToKeep>1</daysToKeep>
-        <numToKeep>-1</numToKeep>
-        <artifactDaysToKeep>-1</artifactDaysToKeep>
-        <artifactNumToKeep>-1</artifactNumToKeep>
-      </strategy>
-    </jenkins.model.BuildDiscarderProperty>
-  </properties>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.5.2">
-    <configVersion>2</configVersion>
-    <userRemoteConfigs>
-      <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/andycockers/jenkins-dsl</url>
-        <credentialsId>github</credentialsId>
-      </hudson.plugins.git.UserRemoteConfig>
-    </userRemoteConfigs>
-    <branches>
-      <hudson.plugins.git.BranchSpec>
-        <name>*/main</name>
-      </hudson.plugins.git.BranchSpec>
-    </branches>
-    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-    <submoduleCfg class="list"/>
-    <extensions/>
-  </scm>
-  <canRoam>true</canRoam>
-  <disabled>false</disabled>
-  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers/>
-  <concurrentBuild>false</concurrentBuild>
-  <builders>
-    <javaposse.jobdsl.plugin.ExecuteDslScripts plugin="job-dsl@1.77">
-      <targets>jenkins_folder_structure/*</targets>
-      <usingScriptText>false</usingScriptText>
-      <sandbox>false</sandbox>
-      <ignoreExisting>false</ignoreExisting>
-      <ignoreMissingFiles>false</ignoreMissingFiles>
-      <failOnMissingPlugin>false</failOnMissingPlugin>
-      <failOnSeedCollision>false</failOnSeedCollision>
-      <unstableOnDeprecation>false</unstableOnDeprecation>
-      <removedJobAction>DELETE</removedJobAction>
-      <removedViewAction>IGNORE</removedViewAction>
-      <removedConfigFilesAction>IGNORE</removedConfigFilesAction>
-      <lookupStrategy>JENKINS_ROOT</lookupStrategy>
-    </javaposse.jobdsl.plugin.ExecuteDslScripts>
-    <javaposse.jobdsl.plugin.ExecuteDslScripts plugin="job-dsl@1.77">
-      <targets>jobs_lib/*</targets>
-      <usingScriptText>false</usingScriptText>
-      <sandbox>false</sandbox>
-      <ignoreExisting>false</ignoreExisting>
-      <ignoreMissingFiles>false</ignoreMissingFiles>
-      <failOnMissingPlugin>false</failOnMissingPlugin>
-      <failOnSeedCollision>false</failOnSeedCollision>
-      <unstableOnDeprecation>false</unstableOnDeprecation>
-      <removedJobAction>DELETE</removedJobAction>
-      <removedViewAction>IGNORE</removedViewAction>
-      <removedConfigFilesAction>IGNORE</removedConfigFilesAction>
-      <lookupStrategy>JENKINS_ROOT</lookupStrategy>
-    </javaposse.jobdsl.plugin.ExecuteDslScripts>
-  </builders>
-  <publishers/>
-  <buildWrappers/>
-</project>
+<hudson>
+  <disabledAdministrativeMonitors>
+    <string>jenkins.diagnostics.SecurityIsOffMonitor</string>
+    <string>jenkins.diagnostics.ControllerExecutorsNoAgents</string>
+  </disabledAdministrativeMonitors>
+  <version>2.319.1</version>
+  <numExecutors>2</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.AuthorizationStrategy$Unsecured"/>
+  <securityRealm class="hudson.security.SecurityRealm$None"/>
+  <disableRememberMe>false</disableRememberMe>
+  <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
+  <workspaceDir>${JENKINS_HOME}/workspace/${ITEM_FULL_NAME}</workspaceDir>
+  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <jdks/>
+  <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
+  <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
+  <clouds>
+    <org.csanchez.jenkins.plugins.kubernetes.KubernetesCloud plugin="kubernetes@1.31.1">
+      <name>kubernetes</name>
+      <defaultsProviderTemplate>inbound-agent</defaultsProviderTemplate>
+      <templates>
+        <org.csanchez.jenkins.plugins.kubernetes.PodTemplate>
+          <id>270b6361-07ee-45e9-bbf2-09cee2f97f5d</id>
+          <name>inbound-agent</name>
+          <namespace>jenkins</namespace>
+          <privileged>false</privileged>
+          <capOnlyOnAlivePods>false</capOnlyOnAlivePods>
+          <alwaysPullImage>false</alwaysPullImage>
+          <instanceCap>2147483647</instanceCap>
+          <slaveConnectTimeout>1000</slaveConnectTimeout>
+          <idleMinutes>0</idleMinutes>
+          <activeDeadlineSeconds>0</activeDeadlineSeconds>
+          <label>jnlp</label>
+          <hostNetwork>false</hostNetwork>
+          <volumes>
+            <org.csanchez.jenkins.plugins.kubernetes.volumes.SecretVolume>
+              <mountPath>/jenkins</mountPath>
+              <secretName>jenkins-serviceaccount</secretName>
+              <defaultMode></defaultMode>
+              <optional>false</optional>
+            </org.csanchez.jenkins.plugins.kubernetes.volumes.SecretVolume>
+          </volumes>
+          <containers>
+            <org.csanchez.jenkins.plugins.kubernetes.ContainerTemplate>
+              <name>jnlp</name>
+              <image>jenkins/inbound-agent</image>
+              <privileged>false</privileged>
+              <alwaysPullImage>false</alwaysPullImage>
+              <workingDir>/home/jenkins/agent</workingDir>
+              <command></command>
+              <args>${computer.jnlpmac} ${computer.name}</args>
+              <ttyEnabled>false</ttyEnabled>
+              <resourceRequestCpu></resourceRequestCpu>
+              <resourceRequestMemory></resourceRequestMemory>
+              <resourceRequestEphemeralStorage></resourceRequestEphemeralStorage>
+              <resourceLimitCpu></resourceLimitCpu>
+              <resourceLimitMemory></resourceLimitMemory>
+              <resourceLimitEphemeralStorage></resourceLimitEphemeralStorage>
+              <envVars>
+                <org.csanchez.jenkins.plugins.kubernetes.model.KeyValueEnvVar>
+                  <key>GOOGLE_APPLICATION_CREDENTIALS</key>
+                  <value>/jenkins/jenkins-test-project.json</value>
+                </org.csanchez.jenkins.plugins.kubernetes.model.KeyValueEnvVar>
+              </envVars>
+              <ports/>
+              <livenessProbe>
+                <execArgs></execArgs>
+                <timeoutSeconds>0</timeoutSeconds>
+                <initialDelaySeconds>0</initialDelaySeconds>
+                <failureThreshold>0</failureThreshold>
+                <periodSeconds>0</periodSeconds>
+                <successThreshold>0</successThreshold>
+              </livenessProbe>
+            </org.csanchez.jenkins.plugins.kubernetes.ContainerTemplate>
+          </containers>
+          <envVars/>
+          <annotations/>
+          <imagePullSecrets/>
+          <nodeProperties/>
+          <yamlMergeStrategy class="org.csanchez.jenkins.plugins.kubernetes.pod.yaml.Overrides"/>
+          <showRawYaml>true</showRawYaml>
+        </org.csanchez.jenkins.plugins.kubernetes.PodTemplate>
+      </templates>
+      <serverUrl></serverUrl>
+      <useJenkinsProxy>false</useJenkinsProxy>
+      <skipTlsVerify>false</skipTlsVerify>
+      <addMasterProxyEnvVars>false</addMasterProxyEnvVars>
+      <capOnlyOnAlivePods>false</capOnlyOnAlivePods>
+      <namespace>jenkins</namespace>
+      <webSocket>false</webSocket>
+      <directConnection>false</directConnection>
+      <jenkinsTunnel>10.72.1.86:50000</jenkinsTunnel>
+      <containerCap>10</containerCap>
+      <retentionTimeout>5</retentionTimeout>
+      <connectTimeout>5</connectTimeout>
+      <readTimeout>15</readTimeout>
+      <podLabels/>
+      <usageRestricted>false</usageRestricted>
+      <maxRequestsPerHost>32</maxRequestsPerHost>
+      <waitForPodSec>600</waitForPodSec>
+      <podRetention class="org.csanchez.jenkins.plugins.kubernetes.pod.retention.Never"/>
+    </org.csanchez.jenkins.plugins.kubernetes.KubernetesCloud>
+  </clouds>
+  <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
+  <views>
+    <hudson.model.AllView>
+      <owner class="hudson" reference="../../.."/>
+      <name>all</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+    </hudson.model.AllView>
+  </views>
+  <primaryView>all</primaryView>
+  <slaveAgentPort>50000</slaveAgentPort>
+  <label></label>
+  <crumbIssuer class="hudson.security.csrf.DefaultCrumbIssuer">
+    <excludeClientIPFromCrumb>false</excludeClientIPFromCrumb>
+  </crumbIssuer>
+  <nodeProperties/>
+  <globalNodeProperties/>
+  <nodeRenameMigrationNeeded>false</nodeRenameMigrationNeeded>
+</hudson>
