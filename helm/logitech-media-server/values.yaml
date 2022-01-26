@@ -10,3 +10,9 @@ host: lms.crabdance.com
 secret: lms-tls
 ingress: "nginx"
 cert_manager: "letsencrypt-prod"
+
+service:
+  clusterIP: ""
+  httpPort: "9000"
+  controlPort: "3483"
+  type: ClusterIP

@@ -6,6 +6,15 @@ spec:
   selector:
     app: {{ .Values.name }}
   ports:
-    - protocol: TCP
-      port: 9000
-      targetPort: 9000
+    - name: http
+      protocol: TCP
+      port: {{ .Values.service.httpPort }}
+      targetPort: http
+    - name: control
+      protocol: TCP
+      port: {{ .Values.service.controlPort }}
+      targetPort: control
+    - name: discovery
+      protocol: UDP
+      port: {{ .Values.service.controlPort }}
+      targetPort: discovery
