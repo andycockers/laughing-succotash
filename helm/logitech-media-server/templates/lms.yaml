@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels: 
+        app: {{ .Values.name }}
+    spec:
+      containers:
+      - name: {{ .Values.name }}
+        image: {{ .Values.image }}:{{ .Values.tag }}
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: music
+          mountPath: /music
+        - name: playlists
+          mountPath: /playlists
+        - name: localtime
+          mountPath: /etc/localtime
+        - name: timezone
+          mountPath: /etc/timezone
+      volumes:
+      - hostPath:
+          path: {{ .Values.config_path }}
+        name: config
+      - hostPath:
+          path: {{ .Values.music_path }}
+        name: music
+      - hostPath:
+          path: {{ .Values.playlist_path }}
+        name: playlists
+      - hostPath:
+          path: /etc/localtime
+        name: localtime
+      - hostPath:
+          path: /etc/timezone
+        name: timezone

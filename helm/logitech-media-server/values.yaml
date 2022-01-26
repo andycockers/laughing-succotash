@@ -1,0 +1,12 @@
+---
+image: lmscommunity/logitechmediaserver
+tag: latest
+name: lms
+namespace: lms
+config_path: /data/lms_config
+music_path: /mnt/flac
+playlist_path: /mnt/flac
+host: lms.crabdance.com
+secret: lms-tls
+ingress: "nginx"
+cert_manager: "letsencrypt-prod"
