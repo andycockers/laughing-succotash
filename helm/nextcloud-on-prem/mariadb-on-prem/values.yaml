@@ -1,0 +1,5 @@
+---
+name: nextcloud-db
+label: nextcloud
+pod_label: nextcloud-db-pod
+storage_path: /data/mariadb
