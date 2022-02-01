@@ -1,0 +1,9 @@
+---
+image: calmmopey/notwordle
+tag: latest
+name: notwordle
+namespace: notwordle
+host: notwordle.crabdance.com
+secret: notwordle-tls
+ingress: "nginx"
+cert_manager: "letsencrypt-prod"
