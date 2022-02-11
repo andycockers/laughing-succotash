@@ -1,0 +1,6 @@
+---
+image: calmmopey/tv-grab
+tag: arm64
+name: tv-grab
+namespace: tv-grab
+output_path: /mnt/maxtor
