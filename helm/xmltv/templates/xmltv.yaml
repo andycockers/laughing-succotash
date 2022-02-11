@@ -20,5 +20,5 @@ spec:
           mountPath: /opt
       volumes:
       - hostPath:
-          path: {{ .Values.config_path }}
+          path: {{ .Values.output_path }}
         name: output
