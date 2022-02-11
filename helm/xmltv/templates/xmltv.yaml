@@ -15,8 +15,6 @@ spec:
       containers:
       - name: {{ .Values.name }}
         image: {{ .Values.image }}:{{ .Values.tag }}
-        command: ["printenv"]
-        args: ["HOSTNAME", "KUBERNETES_PORT"]
         volumeMounts:
         - name: output
           mountPath: /opt
