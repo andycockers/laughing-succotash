@@ -18,7 +18,12 @@ spec:
         volumeMounts:
         - name: output
           mountPath: /opt
+        - name: config
+          mountPath: /root/.xmltv
       volumes:
       - hostPath:
           path: {{ .Values.output_path }}
         name: output
+      - hostPath:
+          path: {{ .Values.config_path }}
+        name: config
