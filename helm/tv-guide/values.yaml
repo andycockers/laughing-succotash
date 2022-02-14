@@ -1,0 +1,7 @@
+---
+image: calmmopey/tv-grab-no-config
+tag: arm64
+name: tv-grab
+namespace: tv-grab
+output_path: /mnt/maxtor
+config_path: /data/xmltv
