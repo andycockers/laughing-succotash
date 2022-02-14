@@ -3,5 +3,5 @@ image: calmmopey/tv-grab
 tag: arm64
 name: tv-grab
 namespace: tv-grab
-output_path: /mnt/maxtor
+output_path: /mnt/pvr/HD/video/xmltv
 config_path: /data/xmltv
