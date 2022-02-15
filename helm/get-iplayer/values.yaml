@@ -1,0 +1,6 @@
+---
+image: calmmopey/get-iplayer
+tag: arm64
+name: get-iplayer
+namespace: get-iplayer
+output_path: /data/get-iplayer
