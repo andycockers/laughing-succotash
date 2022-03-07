@@ -1,0 +1,5 @@
+---
+image: calmmopey/arnie-gcsfuse
+tag: latest
+name: arnie-helm
+namespace: arnie-helm

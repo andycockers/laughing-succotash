@@ -1,0 +1,5 @@
+---
+image: calmmopey/arnie-gke
+tag: 0.0.8
+name: arnie-helm
+namespace: arnie-helm
