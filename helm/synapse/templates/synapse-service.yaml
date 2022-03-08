@@ -6,6 +6,11 @@ spec:
   selector:
     app: {{ .Values.name }}
   ports:
-    - protocol: TCP
+    - name: {{ .Values.name }}
+      protocol: TCP
       port: 8008
       targetPort: 8008
+    - name: {{ .Values.federation_service_name }}
+      protocol: TCP
+      port: 8448
+      targetPort: 8448
