@@ -1,0 +1,10 @@
+---
+image: matrixdotorg/synapse
+tag: v1.53.0
+name: synapse
+namespace: synapse
+config_path: /data/synapse
+host: cockers.crabdance.com
+secret: cockers-tls
+ingress: "nginx"
+cert_manager: "letsencrypt-prod"
