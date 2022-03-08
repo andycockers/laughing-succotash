@@ -1,5 +1,5 @@
 ---
-image: calmmopey/arnie-gke
-tag: 0.0.8
+image: calmmopey/arnie-gke-bullseye
+tag: 0.0.3
 name: arnie-helm
 namespace: arnie-helm
