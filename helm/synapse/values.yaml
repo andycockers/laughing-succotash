@@ -1,10 +1,14 @@
 ---
-image: matrixdotorg/synapse
-tag: v1.53.0
-name: synapse
+synapse_image: matrixdotorg/synapse
+synapse_tag: v1.53.0
+mautrix_image: dock.mau.dev/mautrix/whatsapp
+mautrix_tag: latest
+synapse_name: synapse
+mautrix_name: mautrix
 namespace: synapse
 federation_service_name: fed-synapse
-config_path: /data/synapse
+synapse_config_path: /data/synapse
+mautrix_config_path: /data/mautrix/whatsapp
 host: cockers.crabdance.com
 secret: cockers-tls
 ingress: "nginx"

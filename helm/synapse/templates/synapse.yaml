@@ -1,24 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.name }}
+  name: {{ .Values.synapse_name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.name }}
+      app: {{ .Values.synapse_name }}
   template:
     metadata:
       labels: 
-        app: {{ .Values.name }}
+        app: {{ .Values.synapse_name }}
     spec:
       containers:
-      - name: {{ .Values.name }}
-        image: {{ .Values.image }}:{{ .Values.tag }}
+      - name: {{ .Values.synapse_name }}
+        image: {{ .Values.synapse_image }}:{{ .Values.synapse_tag }}
         volumeMounts:
-        - name: config
+        - name: synapse_config
+          mountPath: /data
+      - name: {{ .Values.mautrix_name }}
+        image: {{ .Values.mautrix_image }}:{{ .Values.mautrix_tag }}
+        volumeMounts:
+        - name: mautrix_config
           mountPath: /data
       volumes:
       - hostPath:
-          path: {{ .Values.config_path }}
-        name: config
+          path: {{ .Values.synapse_config_path }}
+        name: synapse_config
+      - hostPath:
+          path: {{ .Values.mautrix_config_path }}
+        name: mautrix_config
