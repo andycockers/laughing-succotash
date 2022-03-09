@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Values.name }}
+  name: {{ .Values.synapse_name }}
   annotations:
     # use the shared ingress-nginx
     kubernetes.io/ingress.class: {{ .Values.ingress }}
@@ -19,6 +19,6 @@ spec:
         pathType: ImplementationSpecific
         backend:
          service:
-          name: {{ .Values.name }}
+          name: {{ .Values.synapse_name }}
           port:
            number: 8008
