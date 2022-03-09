@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels: 
+        app: {{ .Values.name }}
+    spec:
+      containers:
+      - name: {{ .Values.name }}
+        image: {{ .Values.image }}:{{ .Values.tag }}
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/postgresql/data
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+           secretKeyRef:
+            name: postgress-password
+            key: POSTGRES_PASSWORD
+        - name: POSTGRES_USER
+          value: admin
+      volumes:
+      - hostPath:
+          path: {{ .Values.data_path }}
+        name: data

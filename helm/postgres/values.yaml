@@ -1,0 +1,6 @@
+---
+image: postgres
+tag: latest
+name: postgres
+namespace: postgres
+data_path: /data/postgres
