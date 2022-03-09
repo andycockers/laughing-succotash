@@ -16,17 +16,17 @@ spec:
       - name: {{ .Values.synapse_name }}
         image: {{ .Values.synapse_image }}:{{ .Values.synapse_tag }}
         volumeMounts:
-        - name: synapse_config
+        - name: synapse-config
           mountPath: /data
       - name: {{ .Values.mautrix_name }}
         image: {{ .Values.mautrix_image }}:{{ .Values.mautrix_tag }}
         volumeMounts:
-        - name: mautrix_config
+        - name: mautrix-config
           mountPath: /data
       volumes:
       - hostPath:
           path: {{ .Values.synapse_config_path }}
-        name: synapse_config
+        name: synapse-config
       - hostPath:
           path: {{ .Values.mautrix_config_path }}
-        name: mautrix_config
+        name: mautrix-config
