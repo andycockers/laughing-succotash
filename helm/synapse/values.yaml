@@ -6,7 +6,6 @@ mautrix_tag: latest
 synapse_name: synapse
 mautrix_name: mautrix
 namespace: synapse
-federation_service_name: fed-synapse
 synapse_config_path: /data/synapse
 mautrix_config_path: /data/mautrix/whatsapp
 host: cockers.crabdance.com
