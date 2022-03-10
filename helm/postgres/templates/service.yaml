@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     app: {{ .Values.name }}
-  clusterIP: 10.244.0.500
+  clusterIP: 10.244.0.254
   ports:
     - protocol: TCP
       port: 5432
