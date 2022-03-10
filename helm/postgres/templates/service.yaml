@@ -8,6 +8,7 @@ spec:
     app: {{ .Values.name }}
   type: ExternalName
   externalName: {{ .Values.name }}.{{ .Values.namespace }}.svc.cluster.local
+  clusterIP: 10.244.0.500
   ports:
     - protocol: TCP
       port: 5432
