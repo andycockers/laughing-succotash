@@ -1,0 +1,6 @@
+---
+image: dock.mau.dev/mautrix/whatsapp
+tag: latest
+name: mautrix
+namespace: mautrix-whatsapp
+mautrix_config_path: /data/mautrix/whatsapp
