@@ -22,7 +22,7 @@ spec:
         - name: PODCAST_FS_HOME
           value: {{ .Values.podcast_fs_home }}
         - name: ROOT_URL
-          value: {{ .Values.root_url }}
+          value: https://{{ .Values.root_url }}
       volumes:
       - hostPath:
           path: {{ .Values.volume }}
