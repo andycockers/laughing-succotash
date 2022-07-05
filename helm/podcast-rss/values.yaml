@@ -6,3 +6,6 @@ namespace: podcast-rss
 podcast_fs_home: /podcast
 volume: /mnt/pvr/podcast
 root_url: https://pod.crabdance.com
+secret: podcast-rss
+ingress: "nginx"
+cert_manager: "letsencrypt-prod"
