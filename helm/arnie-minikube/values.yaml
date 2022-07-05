@@ -1,0 +1,6 @@
+---
+image: calmmopey/arnie
+tag: 0.0.6
+name: arnie-helm
+namespace: arnie
+pv_claim: arnie-pv-claim
