@@ -1,0 +1,8 @@
+---
+image: laurentsev/podcast-rss
+tag: arm32latest
+name: podcast-rss
+namespace: podcast-rss
+podcast_fs_home: /podcast
+volume: /mnt/pvr/podcast
+root_url: https://pod.crabdance.com

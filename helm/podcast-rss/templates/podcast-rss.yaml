@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels: 
+        app: {{ .Values.name }}
+    spec:
+      containers:
+      - name: {{ .Values.name }}
+        image: {{ .Values.image }}:{{ .Values.tag }}
+        volumeMounts:
+        - name: podcast
+          mountPath: {{ .Values.podcast_fs_home }}
+        env:
+        - name: PODCAST_FS_HOME
+          value: {{ .Values.podcast_fs_home }}
+        - name: ROOT_URL
+          value: {{ .Values.root_url }}
+      volumes:
+      - hostPath:
+          path: {{ .Values.volume }}
+        name: podcast
