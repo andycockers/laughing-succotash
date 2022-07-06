@@ -18,3 +18,4 @@ spec:
          - hostPath:
              path: {{ .Values.www_path }}
            name: www
+         restartPolicy: OnFailure
