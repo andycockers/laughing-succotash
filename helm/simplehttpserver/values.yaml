@@ -1,0 +1,10 @@
+---
+image: calmmopey/simplehttpserver-arm64
+tag: latest
+name: simplehttpserver
+namespace: simplehttpserver
+host: pod.crabdance.com
+secret: pod-tls
+ingress: "nginx"
+cert_manager: "letsencrypt-prod"
+www_path: /mnt/pvr/podcast
