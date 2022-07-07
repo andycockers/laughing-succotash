@@ -1,0 +1,10 @@
+---
+image: calmmopey/updog-arm64
+tag: latest
+name: updog
+namespace: updog
+host: updog.crabdance.com
+secret: updog-tls
+ingress: "nginx"
+cert_manager: "letsencrypt-prod"
+www_path: /mnt/pvr/podcast
