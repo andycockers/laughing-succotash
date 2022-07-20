@@ -18,8 +18,8 @@ renderHelmLabels: true
 controller:
   # Used for label app.kubernetes.io/component
   componentName: "jenkins-controller"
-  image: "calmmopey/jenkins-arm64-2.277.4"
-  tag: "fixed"
+  image: "jenkins/jenkins"
+  tag: "2.277.4-jdk11"
   imagePullPolicy: "Always"
   imagePullSecretName:
   # Optionally configure lifetime for controller-container
@@ -75,6 +75,10 @@ controller:
   # Set min/max heap here if needed with:
   # javaOpts: "-Xms512m -Xmx512m"
   # jenkinsOpts: ""
+  # If you are using the ingress definitions provided by this chart via the `controller.ingress` block the configured hostname will be the ingress hostname starting with `https://` or `http://` depending on the `tls` configuration.
+  # The Protocol can be overwritten by specifying `controller.jenkinsUrlProtocol`.
+  # jenkinsUrlProtocol: "https"
+  # If you are not using the provided ingress you can specify `controller.jenkinsUrl` to change the url definition.
   # jenkinsUrl: ""
   # If you set this prefix and use ingress controller then you might want to set the ingress path below
   # jenkinsUriPrefix: "/jenkins"
@@ -104,7 +108,7 @@ controller:
   targetPort: 8080
   # For minikube, set this to NodePort, elsewhere use LoadBalancer
   # Use ClusterIP if your setup includes ingress controller
-  serviceType: NodePort
+  serviceType: ClusterIP
   # Jenkins controller service annotations
   serviceAnnotations: {}
   # Jenkins controller custom labels
@@ -137,6 +141,9 @@ controller:
         port: http
       periodSeconds: 10
       timeoutSeconds: 5
+      # If Startup Probe is not supported on your Kubernetes cluster, you might want to use "initialDelaySeconds" instead.
+      # It delays the initial liveness probe while Jenkins is starting
+      # initialDelaySeconds: 60
     readinessProbe:
       failureThreshold: 3
       httpGet:
@@ -144,8 +151,14 @@ controller:
         port: http
       periodSeconds: 10
       timeoutSeconds: 5
+      # If Startup Probe is not supported on your Kubernetes cluster, you might want to use "initialDelaySeconds" instead.
+      # It delays the initial readyness probe while Jenkins is starting
+      # initialDelaySeconds: 60
+
+  agentListenerEnabled: true
   agentListenerPort: 50000
   agentListenerHostPort:
+  agentListenerNodePort:
   disabledAgentProtocols:
     - JNLP-connect
     - JNLP2-connect
@@ -193,22 +206,11 @@ controller:
   installPlugins:
     - kubernetes:1.29.4
     - workflow-aggregator:2.6
-    - git:4.5.2
-    - configuration-as-code:1.47
-    - ansible:1.1
-    - command-launcher:1.5
-    - docker-commons:1.17
-    - google-oauth-plugin:1.0.2
-    - job-dsl:1.77
-    - jdk-tool:1.4
-    - pipeline-utility-steps:2.6.1
-    - pipeline-github:2.7
-    - swarm:3.24
-    - terraform:1.0.10
-    - plain-credentials:1.7
-    - credentials:2.3.14
-    - gcp-secrets-manager-credentials-provider:0.2.6
-    - matrix-auth:2.6.6
+    - git:4.7.1
+    - configuration-as-code:1.51
+
+  # Set to false to download the minimum required version of all dependencies.
+  installLatestPlugins: false
 
   # List of plugins to install in addition to those listed in controller.installPlugins
   additionalPlugins: []
@@ -236,6 +238,33 @@ controller:
   #  - |
   #    print 'adding global pipeline libraries, register properties, bootstrap jobs...'
 
+  # 'name' is a name of an existing secret in same namespace as jenkins,
+  # 'keyName' is the name of one of the keys inside current secret.
+  # the 'name' and 'keyName' are concatenated with a '-' in between, so for example:
+  # an existing secret "secret-credentials" and a key inside it named "github-password" should be used in Jcasc as ${secret-credentials-github-password}
+  # 'name' and 'keyName' must be lowercase RFC 1123 label must consist of lower case alphanumeric characters or '-',
+  # and must start and end with an alphanumeric character (e.g. 'my-name',  or '123-abc')
+  additionalExistingSecrets: []
+  #  - name: secret-name-1
+  #    keyName: username
+  #  - name: secret-name-1
+  #    keyName: password
+
+  additionalSecrets: []
+  #  - name: nameOfSecret
+  #    value: secretText
+
+  # Generate SecretClaim resources in order to create Kubernetes secrets from HashiCorp Vault using kube-vault-controller.
+  # 'name' is name of the secret that will be created in Kubernetes. The Jenkins fullname is prepended to this value.
+  # 'path' is the fully qualified path to the secret in Vault
+  # 'type' is an optional Kubernetes secret type. Defaults to 'Opaque'
+  # 'renew' is an optional secret renewal time in seconds
+  secretClaims: []
+  # - name: secretName        # required
+  #   path: testPath          # required
+  #   type: kubernetes.io/tls # optional
+  #   renew: 60               # optional
+
   # Below is the implementation of Jenkins Configuration as Code.  Add a key under configScripts for each configuration area,
   # where each corresponds to a plugin or section of the UI.  Each key (prior to | character) is just a label, and can be any value.
   # Keys are only used to give the section a meaningful name.  The only restriction is they may only contain RFC 1123 \ DNS label
@@ -244,7 +273,6 @@ controller:
   # become the content of the configuration yaml file.  The first line after this is a JCasC root element, eg jenkins, credentials,
   # etc.  Best reference is https://<jenkins_url>/configuration-as-code/reference.  The example below creates a welcome message:
   JCasC:
-    enabled: true
     defaultConfig: true
     configScripts: {}
     #  welcome-message: |
@@ -252,21 +280,18 @@ controller:
     #      systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
     # Ignored if securityRealm is defined in controller.JCasC.configScripts and
     # ignored if controller.enableXmlConfig=true as controller.securityRealm takes precedence
-
-
     securityRealm: |-
       local:
         allowsSignup: false
         enableCaptcha: false
         users:
-        - id: "andrew"
-          password: "_123Go!ChangeME"
+        - id: "${chart-admin-username}"
+          name: "Jenkins Admin"
+          password: "${chart-admin-password}"
     # Ignored if authorizationStrategy is defined in controller.JCasC.configScripts
     authorizationStrategy: |-
-      globalMatrix:
-          grantedPermissions:
-          - "Overall/Administer:andrew"
-          - "Overall/Read:andrew"
+      loggedInUsersCanDoAnything:
+        allowAnonymousRead: false
   # Optionally specify additional init-containers
   customInitContainers: []
   # - name: custom-init
@@ -274,14 +299,13 @@ controller:
   #   imagePullPolicy: Always
   #   command: [ "uname", "-a" ]
 
-
   sidecars:
     configAutoReload:
       # If enabled: true, Jenkins Configuration as Code will be reloaded on-the-fly without a reboot.  If false or not-specified,
-      # jcasc changes will cause a kiwigrid/k8s-sidecareboot and will only be applied at the subsequent start-up.  Auto-reload uses the
+      # jcasc changes will cause a reboot and will only be applied at the subsequent start-up.  Auto-reload uses the
       # http://<jenkins_url>/reload-configuration-as-code endpoint to reapply config when changes to the configScripts are detected.
       enabled: true
-      image: kiwigrid/k8s-sidecar
+      image: kiwigrid/k8s-sidecar:0.1.275
       imagePullPolicy: IfNotPresent
       resources: {}
         #   limits:
@@ -344,6 +368,10 @@ controller:
   podAnnotations: {}
   # Add StatefulSet annotations
   statefulSetAnnotations: {}
+
+  # StatefulSet updateStrategy
+  # ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#update-strategies
+  updateStrategy: {}
 
   ingress:
     enabled: false
@@ -509,9 +537,9 @@ agent:
   kubernetesReadTimeout: 15
   maxRequestsPerHostStr: "32"
   namespace:
-  image: "calmmopey/jenkins-inbound-agent-arm7"
-  tag: "latest"
-  workingDir: "/home/jenkins/agent"
+  image: "jenkins/inbound-agent"
+  tag: "4.6-1"
+  workingDir: "/home/jenkins"
   customJenkinsLabels: []
   # name of the secret to be used for image pulling
   imagePullSecretName:
@@ -536,7 +564,7 @@ agent:
   # Allowed types are: ConfigMap, EmptyDir, HostPath, Nfs, PVC, Secret
   # Configure the attributes as they appear in the corresponding Java class for that type
   # https://github.com/jenkinsci/kubernetes-plugin/tree/master/src/main/java/org/csanchez/jenkins/plugins/kubernetes/volumes
-  volumes:
+  volumes: []
   # - type: ConfigMap
   #   configMapName: myconfigmap
   #   mountPath: /var/myapp/myconfigmap
@@ -544,8 +572,8 @@ agent:
   #   mountPath: /var/myapp/myemptydir
   #   memory: false
   # - type: HostPath
-  #   hostPath: /tmp
-  #   mountPath: /tmp
+  #   hostPath: /var/lib/containers
+  #   mountPath: /var/myapp/myhostpath
   # - type: Nfs
   #   mountPath: /var/myapp/mynfs
   #   readOnly: false
@@ -557,21 +585,21 @@ agent:
   #   readOnly: false
   # - type: Secret
   #   defaultMode: "600"
-  #   mountPath: /tmp/jenkins-test-project.json
-  #   secretName: gcp-service-account
+  #   mountPath: /var/myapp/mysecret
+  #   secretName: mysecret
   # Pod-wide environment, these vars are visible to any container in the agent pod
 
   # You can define the workspaceVolume that you want to mount for this container
   # Allowed types are: DynamicPVC, EmptyDir, HostPath, Nfs, PVC
   # Configure the attributes as they appear in the corresponding Java class for that type
   # https://github.com/jenkinsci/kubernetes-plugin/tree/master/src/main/java/org/csanchez/jenkins/plugins/kubernetes/volumes/workspace
-  workspaceVolume:
+  workspaceVolume: {}
   # - type: DynamicPVC
   #   configMapName: myconfigmap
   # - type: EmptyDir
   #   memory: false
   # - type: HostPath
-  #   hostPath: /tmp
+  #   hostPath: /var/lib/containers
   # - type: Nfs
   #   readOnly: false
   #   serverAddress: "192.0.2.0"
@@ -580,9 +608,9 @@ agent:
   #   claimName: mypvc
   #   readOnly: false
   # Pod-wide environment, these vars are visible to any container in the agent pod
-  envVars:
-  - name: GOOGLE_APPLICATION_CREDENTIALS
-    value: "/tmp/jenkins-test-project.json"
+  envVars: []
+  # - name: PATH
+  #   value: /usr/local/bin
   nodeSelector: {}
   # Key Value selectors. Ex:
   # jenkins-agent: v1
@@ -716,6 +744,8 @@ serviceAccount:
   # The name of the service account is autogenerated by default
   name:
   annotations: {}
+  imagePullSecretName:
+
 
 serviceAccountAgent:
   # Specifies whether a ServiceAccount should be created
@@ -724,6 +754,7 @@ serviceAccountAgent:
   # If not set and create is true, a name is generated using the fullname template
   name:
   annotations: {}
+  imagePullSecretName:
 
 ## Backup cronjob configuration
 ## Ref: https://github.com/maorfr/kube-tasks
@@ -762,10 +793,10 @@ backup:
    # jenkinsgcp:
   ## Use this key for GCP credentials
      # gcpcredentials: credentials.json
-  env:
+  env: []
   # Example environment variable required for AWS credentials chain
-   - name: "GOOGLE_APPLICATION_CREDENTIALS"
-     value: "/tmp/jenkins-test-project.json"
+  # - name: "AWS_REGION"
+  #   value: "us-east-1"
   resources:
     requests:
       memory: 1Gi
