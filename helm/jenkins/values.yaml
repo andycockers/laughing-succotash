@@ -209,6 +209,7 @@ controller:
     - git:4.7.1
     - configuration-as-code:1.51
     - bouncycastle-api:2.26
+    - branch-api:2.1046.v0ca_37783ecc5
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
