@@ -223,7 +223,7 @@ controller:
     - jackson2-api:2.13.3-285.vc03c0256d517
     - javax-activation-api:1.2.0-3
     - jaxb:2.3.6-1
-    - snakeyaml-api:1.29.1
+    - snakeyaml-api:1.30.2-76.vc104f7ce9870
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
