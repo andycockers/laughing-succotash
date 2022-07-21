@@ -213,6 +213,7 @@ controller:
     - caffeine-api:2.9.3-65.v6a_47d0f4d1fe
     - command-launcher:84.v4a_97f2027398
     - credentials:1139.veb_9579fca_33b_
+    - credentials-binding:523.vd859a_4b_122e6
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
