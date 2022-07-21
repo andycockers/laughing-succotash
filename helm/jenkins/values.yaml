@@ -231,6 +231,7 @@ controller:
     - workflow-durable-task-step:1190.vc93d7d457042
     - pipeline-model-definition:2.2114.v2654ca_721309
     - docker-workflow:1.29
+    - kubernetes-client-api:5.12.2-193.v26a_6078f65a_9
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
