@@ -245,7 +245,8 @@ controller:
     - jquery3-api:3.6.0-4
     - lockable-resources:2.15
     - jdk-tool:1.5
-    
+    - pipeline-graph-analysis:195.v5812d95a_a_2f9
+
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
 
