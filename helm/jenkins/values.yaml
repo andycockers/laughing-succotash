@@ -242,6 +242,7 @@ controller:
     - font-awesome-api:6.1.1-1
     - jakarta-activation-api:2.0.0-3
     - jakarta-mail-api:2.0.0-6
+    - jquery3-api:3.6.0-4
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
