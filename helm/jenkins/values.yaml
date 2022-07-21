@@ -251,6 +251,7 @@ controller:
     - workflow-cps-global-lib:588.v576c103a_ff86
     - workflow-cps:2746.v0da_83a_332669
     - pipeline-rest-api:2.24
+    - pipeline-stage-view:2.24
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
