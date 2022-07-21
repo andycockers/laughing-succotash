@@ -207,7 +207,7 @@ controller:
     - kubernetes:1.29.4
     - workflow-aggregator:2.6
     - git:4.7.1
-    - configuration-as-code:1.51
+    - configuration-as-code:1511.vb_f985b_894e40
     - bouncycastle-api:2.26
     - branch-api:2.1046.v0ca_37783ecc5
     - caffeine-api:2.9.3-65.v6a_47d0f4d1fe
