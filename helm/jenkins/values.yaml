@@ -234,6 +234,7 @@ controller:
     - kubernetes-client-api:5.12.2-193.v26a_6078f65a_9
     - jdk-tool:1.5
     - mailer:435.v79ef3972b_5c7
+    - junit:1.47
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
