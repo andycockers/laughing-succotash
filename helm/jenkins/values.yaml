@@ -260,6 +260,7 @@ controller:
     - sshd:3.242.va_db_9da_b_26a_c3
     - mina-sshd-api-common:2.8.0-30.vf9df64641cb_d
     - mina-sshd-api-core:2.8.0-30.vf9df64641cb_d
+    - trilead-api:1.67.vc3938a_35172f
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
