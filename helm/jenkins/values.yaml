@@ -204,7 +204,7 @@ controller:
 
   # List of plugins to be install during Jenkins controller start
   installPlugins:
-    - kubernetes:1.29.4
+    - kubernetes:3670.v6ca_059233222
     - workflow-aggregator:2.6
     - git:4.11.3
     - configuration-as-code:1512.vb_79d418d5fc8
