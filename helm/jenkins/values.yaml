@@ -220,7 +220,10 @@ controller:
     - cloudbees-folder:6.729.v2b_9d1a_74d673
     - git-server:1.11
     - icon-shim:3.0.0
-    #- jackson2-api:2.13.3-285.vc03c0256d517
+    - jackson2-api:2.13.3-285.vc03c0256d517
+    - javax-activation-api:1.2.0-3
+    - jaxb:2.3.6-1
+    - snakeyaml-api:1.29.1
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
