@@ -237,6 +237,7 @@ controller:
     - junit:1.47
     - bootstrap4-api:4.6.0-5
     - checks-api:1.7.4
+    - echarts-api:5.3.3-1
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
