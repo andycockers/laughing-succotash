@@ -243,6 +243,7 @@ controller:
     - jakarta-activation-api:2.0.0-3
     - jakarta-mail-api:2.0.0-6
     - jquery3-api:3.6.0-4
+    - lockable-resources:2.15
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
