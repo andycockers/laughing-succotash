@@ -252,6 +252,7 @@ controller:
     - workflow-cps:2746.v0da_83a_332669
     - pipeline-rest-api:2.24
     - pipeline-stage-view:2.24
+    - workflow-support:833.va_1c71061486b_
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
