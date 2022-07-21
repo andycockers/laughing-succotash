@@ -346,8 +346,8 @@ controller:
       loggedInUsersCanDoAnything:
         allowAnonymousRead: false
 
-    clouds:
-    - kubernetes:
+    clouds: |-
+     kubernetes:
         containerCap: 10
         containerCapStr: "10"
         jenkinsTunnel: "jenkins-agent:5000"
