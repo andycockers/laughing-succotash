@@ -234,7 +234,7 @@ controller:
     - kubernetes-client-api:5.12.2-193.v26a_6078f65a_9
     - jdk-tool:1.5
     - mailer:435.v79ef3972b_5c7
-    - junit:1.47
+    - junit:1119.1121.vc43d0fc45561
     - bootstrap4-api:4.6.0-5
     - checks-api:1.7.4
     - echarts-api:5.3.3-1
