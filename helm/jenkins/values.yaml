@@ -253,6 +253,7 @@ controller:
     - pipeline-rest-api:2.24
     - pipeline-stage-view:2.24
     - workflow-support:833.va_1c71061486b_
+    - plugin-util-api:2.17.0
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
