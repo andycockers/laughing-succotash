@@ -249,6 +249,7 @@ controller:
     - workflow-api:1188.v0016b_4f29881
     - workflow-basic-steps:980.v82219a_ed188e
     - workflow-cps-global-lib:588.v576c103a_ff86
+    - workflow-cps:2746.v0da_83a_332669
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
