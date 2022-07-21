@@ -212,6 +212,7 @@ controller:
     - branch-api:2.1046.v0ca_37783ecc5
     - caffeine-api:2.9.3-65.v6a_47d0f4d1fe
     - command-launcher:84.v4a_97f2027398
+    - credentials:1139.veb_9579fca_33b_
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
