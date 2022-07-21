@@ -205,7 +205,7 @@ controller:
   # List of plugins to be install during Jenkins controller start
   installPlugins:
     - kubernetes:3670.v6ca_059233222
-    - workflow-aggregator:2.6
+    - workflow-aggregator:590.v6a_d052e5a_a_b_5
     - git:4.11.3
     - configuration-as-code:1512.vb_79d418d5fc8
     - bouncycastle-api:2.26
@@ -245,7 +245,7 @@ controller:
     - jquery3-api:3.6.0-4
     - lockable-resources:2.15
     - jdk-tool:1.5
-
+    
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
 
