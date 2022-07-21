@@ -236,6 +236,7 @@ controller:
     - mailer:435.v79ef3972b_5c7
     - junit:1.47
     - bootstrap4-api:4.6.0-5
+    - checks-api:1.7.4
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
