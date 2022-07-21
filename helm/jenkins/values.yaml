@@ -206,7 +206,7 @@ controller:
   installPlugins:
     - kubernetes:1.29.4
     - workflow-aggregator:2.6
-    - git:4.7.1
+    - git:4.11.3
     - configuration-as-code:1511.vb_f985b_894e40
     - bouncycastle-api:2.26
     - branch-api:2.1046.v0ca_37783ecc5
