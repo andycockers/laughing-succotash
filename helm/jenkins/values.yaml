@@ -228,6 +228,7 @@ controller:
     - ace-editor:1.1
     - handlebars:3.0.8
     - momentjs:1.1.1
+    - workflow-durable-task-step:1190.vc93d7d457042
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
