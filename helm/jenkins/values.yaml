@@ -218,6 +218,7 @@ controller:
     - docker-commons:1.19
     - durable-task:496.va67c6f9eefa7
     - cloudbees-folder:6.729.v2b_9d1a_74d673
+    - git-server:1.11
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
