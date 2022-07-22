@@ -351,7 +351,7 @@ controller:
        kubernetes:
           containerCap: 10
           containerCapStr: "10"
-          jenkinsTunnel: "jenkins-agent:5000"
+          jenkinsTunnel: "jenkins-agent:50000"
           jenkinsUrl: "http://jenkins:8080"
           name: "kubernetes"
           namespace: "jenkins"
