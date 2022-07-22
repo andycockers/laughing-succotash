@@ -390,6 +390,13 @@ controller:
             slaveConnectTimeout: 100
             slaveConnectTimeoutStr: "100"
             yamlMergeStrategy: "override"
+
+      unclassified:
+      gcpCredentialsProvider:
+        filter:
+          label: "my-label"
+          value: "my-value-1,my-value-2"
+        project: "my-gcp-project" 
   # Optionally specify additional init-containers
   customInitContainers: []
   # - name: custom-init
