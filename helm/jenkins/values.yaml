@@ -328,10 +328,10 @@ controller:
   # etc.  Best reference is https://<jenkins_url>/configuration-as-code/reference.  The example below creates a welcome message:
   JCasC:
     enabled: true
-    configScripts:
-    #  welcome-message: |
-    #    jenkins:
-    #      systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
+    configScripts: {}
+    welcome-message: |-
+        jenkins:
+          systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
     # Ignored if securityRealm is defined in controller.JCasC.configScripts and
     # ignored if controller.enableXmlConfig=true as controller.securityRealm takes precedence
     securityRealm: |-
@@ -347,7 +347,7 @@ controller:
       loggedInUsersCanDoAnything:
         allowAnonymousRead: false
 
-    jenkins:
+    jenkins: |-
       clouds: 
        kubernetes:
           containerCap: 10
@@ -391,7 +391,7 @@ controller:
             slaveConnectTimeoutStr: "100"
             yamlMergeStrategy: "override"
 
-      unclassified:
+    unclassified: |-
       gcpCredentialsProvider:
         filter:
           label: "my-label"
