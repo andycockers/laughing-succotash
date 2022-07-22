@@ -262,6 +262,7 @@ controller:
     - mina-sshd-api-core:2.8.0-30.vf9df64641cb_d
     - trilead-api:1.67.vc3938a_35172f
     - gcp-secrets-manager-credentials-provider:0.2.6
+    - google-login:1.6
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
