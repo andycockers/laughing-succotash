@@ -329,9 +329,9 @@ controller:
   JCasC:
     defaultConfig: true
     configScripts: {}
-    welcome-message: |-
-        jenkins:
-          systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
+    #welcome-message: |-
+    #    jenkins:
+    #      systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
     # Ignored if securityRealm is defined in controller.JCasC.configScripts and
     # ignored if controller.enableXmlConfig=true as controller.securityRealm takes precedence
     securityRealm: |-
@@ -347,8 +347,7 @@ controller:
       loggedInUsersCanDoAnything:
         allowAnonymousRead: false
 
-    jenkins: |-
-      clouds: 
+    clouds: |-
        kubernetes:
           containerCap: 10
           containerCapStr: "10"
