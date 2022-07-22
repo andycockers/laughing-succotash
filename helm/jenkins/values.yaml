@@ -336,12 +336,29 @@ controller:
     # ignored if controller.enableXmlConfig=true as controller.securityRealm takes precedence
     securityRealm: |-
       local:
-        allowsSignup: false
-        enableCaptcha: false
-        #users:
-        #- id: "${chart-admin-username}"
-        #  name: "Jenkins Admin"
-        #  password: "${chart-admin-password}"
+        local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: "admin"
+        name: "Jenkins Admin"
+        properties:
+        - "apiToken"
+        - "mailer"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+      - id: "andy"
+        name: "Andy Cockerill"
+        properties:
+        - "apiToken"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - mailer:
+            emailAddress: "blah@blah.com"
     # Ignored if authorizationStrategy is defined in controller.JCasC.configScripts
     authorizationStrategy: |-
       loggedInUsersCanDoAnything:
