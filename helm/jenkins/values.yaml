@@ -329,12 +329,12 @@ controller:
   JCasC:
     enabled: true
     configScripts: {}
-    welcome-message: |-
+    welcome-message: |
         jenkins:
           systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
     # Ignored if securityRealm is defined in controller.JCasC.configScripts and
     # ignored if controller.enableXmlConfig=true as controller.securityRealm takes precedence
-    securityRealm: |-
+    securityRealm: |
       local:
         allowsSignup: false
         enableCaptcha: false
@@ -343,11 +343,11 @@ controller:
           name: "Jenkins Admin"
           password: "${chart-admin-password}"
     # Ignored if authorizationStrategy is defined in controller.JCasC.configScripts
-    authorizationStrategy: |-
+    authorizationStrategy: |
       loggedInUsersCanDoAnything:
         allowAnonymousRead: false
 
-    jenkins: |-
+    jenkins: |
       clouds: 
        kubernetes:
           containerCap: 10
@@ -391,7 +391,7 @@ controller:
             slaveConnectTimeoutStr: "100"
             yamlMergeStrategy: "override"
 
-    unclassified: |-
+    unclassified: |
       gcpCredentialsProvider:
         filter:
           label: "my-label"
