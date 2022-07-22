@@ -348,7 +348,7 @@ controller:
       loggedInUsersCanDoAnything:
         allowAnonymousRead: false
 
-    kubernetes-plugin: |
+    kubernetesPlugin: |
        jenkins:
         clouds:
            - kubernetes:
