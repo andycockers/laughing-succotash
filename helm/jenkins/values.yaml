@@ -348,8 +348,10 @@ controller:
       loggedInUsersCanDoAnything:
         allowAnonymousRead: false
 
-    clouds: |-
-       kubernetes:
+    kubernetes-plugin: |
+       jenkins:
+        clouds:
+        - kubernetes:
           containerCap: 10
           containerCapStr: "10"
           jenkinsTunnel: "jenkins-agent:50000"
@@ -391,7 +393,7 @@ controller:
             slaveConnectTimeoutStr: "100"
             yamlMergeStrategy: "override"
 
-    unclassified: |-
+    unclassified: |
       gcpCredentialsProvider:
         filter:
           label: "my-label"
