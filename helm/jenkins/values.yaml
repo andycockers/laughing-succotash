@@ -336,13 +336,9 @@ controller:
     # Ignored if securityRealm is defined in controller.JCasC.configScripts and
     # ignored if controller.enableXmlConfig=true as controller.securityRealm takes precedence
     securityRealm: |-
-      local:
-        allowsSignup: false
-        enableCaptcha: false
-        users:
-        - id: "${chart-admin-username}"
-          name: "Jenkins Admin"
-          password: "${chart-admin-password}"
+      googleOAuth2:
+        clientId: "858230315033-6hrvuvqtr3ujhlsnqedla9rhkkjdt1cn.apps.googleusercontent.com"
+        clientSecret: "{AQAAABAAAAAwe+vCv7LlupbkqrQR3XcdKQ0JZa36E7Fped7VJo0Cz71lsG80DD3QOH7JUdcv42H9ubHmgufge13aoGc0NbRXQg==}"
     # Ignored if authorizationStrategy is defined in controller.JCasC.configScripts
     authorizationStrategy: |-
       loggedInUsersCanDoAnything:
