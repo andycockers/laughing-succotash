@@ -335,7 +335,7 @@ controller:
     #      systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
     # Ignored if securityRealm is defined in controller.JCasC.configScripts and
     # ignored if controller.enableXmlConfig=true as controller.securityRealm takes precedence
-    securityRealm: |-
+    securityRealm: |
       local:
         allowsSignup: false
         enableCaptcha: false
@@ -344,7 +344,7 @@ controller:
           name: "Jenkins Admin"
           password: "${chart-admin-password}"
     # Ignored if authorizationStrategy is defined in controller.JCasC.configScripts
-    authorizationStrategy: |-
+    authorizationStrategy: |
       loggedInUsersCanDoAnything:
         allowAnonymousRead: false
 
@@ -395,10 +395,7 @@ controller:
 
     unclassified: |
       gcpCredentialsProvider:
-        filter:
-          label: "my-label"
-          value: "my-value-1,my-value-2"
-        project: "my-gcp-project" 
+       project: "jenkins-test-project-284609"
   # Optionally specify additional init-containers
   customInitContainers: []
   # - name: custom-init
