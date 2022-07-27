@@ -396,7 +396,7 @@ controller:
     other-infra: |
       unclassified:
         gcpCredentialsProvider:
-          project: "jenkins-test-project-284609"
+          project: "jenkins-test-project-28460"
   # Optionally specify additional init-containers
   customInitContainers: []
   # - name: custom-init
