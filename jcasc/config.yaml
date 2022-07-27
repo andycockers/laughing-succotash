@@ -1,0 +1,5 @@
+unclassified:
+  gcpCredentialsProvider:
+    project: "jenkins-test-project-284609"
+  location:
+    url: "https://blane.uk.to"
