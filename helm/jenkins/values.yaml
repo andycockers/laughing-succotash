@@ -393,7 +393,7 @@ controller:
                slaveConnectTimeoutStr: "100"
                yamlMergeStrategy: "override"
 
-    other-infra: |
+    otherInfra: |
       unclassified:
         gcpCredentialsProvider:
           project: "jenkins-test-project-28460"
