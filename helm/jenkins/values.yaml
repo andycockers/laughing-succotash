@@ -393,9 +393,10 @@ controller:
                slaveConnectTimeoutStr: "100"
                yamlMergeStrategy: "override"
 
-    unclassified: |
-      gcpCredentialsProvider:
-       project: "jenkins-test-project-284609"
+    other-infra: |
+      unclassified:
+        gcpCredentialsProvider:
+          project: "jenkins-test-project-284609"
   # Optionally specify additional init-containers
   customInitContainers: []
   # - name: custom-init
