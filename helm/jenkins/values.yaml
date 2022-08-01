@@ -270,6 +270,7 @@ controller:
     - variant:59.vf075fe829ccb
     - apache-httpcomponents-client-4-api:4.5.13-138.v4e7d9a_7b_a_e61
     - git-client:3.11.1
+    - plain-credentials:139.ved2b_9cf7587b
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: false
