@@ -26,3 +26,4 @@ spec:
         name: output
       - hostPath:
           path: {{ .Values.pvr_path }}
+        name: pvr
