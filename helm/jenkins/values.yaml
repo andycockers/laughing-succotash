@@ -232,7 +232,7 @@ controller:
     - pipeline-model-definition:2.2114.v2654ca_721309
     - docker-workflow:1.29
     - kubernetes-client-api:5.12.2-193.v26a_6078f65a_9
-    - jdk-tool:1.5
+    - jdk-tool:55.v1b_32b_6ca_f9ca
     - mailer:435.v79ef3972b_5c7
     - junit:1119.1121.vc43d0fc45561
     - bootstrap4-api:4.6.0-5
@@ -244,7 +244,6 @@ controller:
     - jakarta-mail-api:2.0.0-6
     - jquery3-api:3.6.0-4
     - lockable-resources:2.16
-    - jdk-tool:1.5
     - pipeline-graph-analysis:195.v5812d95a_a_2f9
     - workflow-api:1188.v0016b_4f29881
     - workflow-basic-steps:986.v6b_9c830a_6b_37
@@ -264,7 +263,7 @@ controller:
     - gcp-secrets-manager-credentials-provider:0.2.6
     - google-login:1.6
     - metrics:4.2.10-389.v93143621b_050
-    - pipeline-groovy-lib:598.vcd66b_a_336510
+    - pipeline-groovy-lib:612.v84da_9c54906d
     - workflow-step-api:639.v6eca_cd8c04a_a_
     - scm-api:616.ve67136f6c77d
     - structs:324.va_f5d6774f3a_d
