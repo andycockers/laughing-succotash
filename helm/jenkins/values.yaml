@@ -362,8 +362,7 @@ controller:
       unclassified:
         gcpCredentialsProvider:
           project: "jenkins-test-project-284609"
-        location:
-          url: "https://blane.uk.blah"
+        
   # Optionally specify additional init-containers
   customInitContainers: []
   # - name: custom-init
