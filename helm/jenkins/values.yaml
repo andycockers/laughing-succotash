@@ -265,7 +265,7 @@ controller:
     - metrics:4.2.10-389.v93143621b_050
     - pipeline-groovy-lib:612.v84da_9c54906d
     - workflow-step-api:639.v6eca_cd8c04a_a_
-    - scm-api:616.ve67136f6c77d
+    - scm-api:620.v0a_5b_1f8054c0
     - structs:324.va_f5d6774f3a_d
     - variant:59.vf075fe829ccb
     - apache-httpcomponents-client-4-api:4.5.13-138.v4e7d9a_7b_a_e61
@@ -339,12 +339,12 @@ controller:
     enabled: true
     defaultConfig: true
     configScripts:
-    welcome-message: |
+    welcome-message: |-
         jenkins:
           systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
     #Ignored if securityRealm is defined in controller.JCasC.configScripts and
     #ignored if controller.enableXmlConfig=true as controller.securityRealm takes precedence
-    securityRealm: |
+    securityRealm: |-
       local:
         allowsSignup: false
         enableCaptcha: false
@@ -353,11 +353,11 @@ controller:
           name: "Jenkins Admin"
           password: "${chart-admin-password}"
     # Ignored if authorizationStrategy is defined in controller.JCasC.configScripts
-    authorizationStrategy: |
+    authorizationStrategy: |-
       loggedInUsersCanDoAnything:
         allowAnonymousRead: false
 
-    kubernetesPlugin: |
+    kubernetesPlugin: |-
        jenkins:
         clouds:
            - kubernetes:
@@ -402,7 +402,7 @@ controller:
                slaveConnectTimeoutStr: "100"
                yamlMergeStrategy: "override"
 
-    otherInfra: |
+    otherInfra: |-
       unclassified:
         gcpCredentialsProvider:
           project: "jenkins-test-project-28460"
