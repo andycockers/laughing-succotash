@@ -356,12 +356,12 @@ controller:
     configScripts:
      welcome-message: |-
         jenkins:
-          systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
+          systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as cod'.
 
      other-infra: |-
       unclassified:
         gcpCredentialsProvider:
-          project: "jenkins-test-project-28460"
+          project: "jenkins-test-project-284609"
         location:
           url: "https://blane.uk.blah"
   # Optionally specify additional init-containers
