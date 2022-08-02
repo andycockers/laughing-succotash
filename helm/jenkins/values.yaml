@@ -362,8 +362,11 @@ controller:
       unclassified:
         gcpCredentialsProvider:
           project: "jenkins-test-project-284609"
+        location:
+         adminAddress: 
+         url: https://blane.uk.to
 
-     clouds: |-
+     jenkins: |-
        jenkins:
          clouds:
           - kubernetes:
@@ -411,6 +414,17 @@ controller:
                  serviceAccount: "default"
                  slaveConnectTimeoutStr: "100"
                  yamlMergeStrategy: override
+         crumbIssuer:
+          standard:
+            excludeClientIPFromCrumb: true
+
+     security: |-
+       security:
+         apiToken:
+          creationOfLegacyTokenEnabled: false
+          tokenGenerationOnCreationEnabled: false
+          usageStatisticsEnabled: true
+
 
         
   # Optionally specify additional init-containers
