@@ -360,7 +360,7 @@ controller:
         jenkins:
           systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
 
-     otherInfra: |-
+     other-infra: |-
       unclassified:
         gcpCredentialsProvider:
           project: "jenkins-test-project-28460"
