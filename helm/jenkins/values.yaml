@@ -365,8 +365,8 @@ controller:
         location:
           url: "https://blah.com"
      clouds: |-
-      jenkins
-        clouds
+      jenkins:
+        clouds:
         - kubernetes:
             containerCap: 10
             containerCapStr: "10"
