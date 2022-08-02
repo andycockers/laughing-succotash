@@ -382,35 +382,35 @@ controller:
                value: "true"
              templates:
                - name: "default"
-               namespace: "jenkins"
-             containers:
-             - name: "jnlp"
-               alwaysPullImage: false
-               args: "^${computer.jnlpmac} ^${computer.name}"
-               command: 
-               envVars:
-               - envVar:
-                 key: "JENKINS_URL"
-                 value: "http://jenkins.jenkins.svc.cluster.local:8080/"
-            image: "jenkins/inbound-agent:4.6-1"
-            privileged: "false"
-            resourceLimitCpu: 512m
-            resourceLimitMemory: 512Mi
-            resourceRequestCpu: 512m
-            resourceRequestMemory: 512Mi
-            runAsUser: 
-            runAsGroup: 
-            ttyEnabled: false
-            workingDir: /home/jenkins
-          idleMinutes: 0
-          instanceCap: 2147483647
-          label: "jenkins-jenkins-agent "
-          nodeUsageMode: "NORMAL"
-          podRetention: Never
-          showRawYaml: true
-          serviceAccount: "default"
-          slaveConnectTimeoutStr: "100"
-          yamlMergeStrategy: override
+                 namespace: "jenkins"
+                 containers:
+                 - name: "jnlp"
+                   alwaysPullImage: false
+                   args: "^${computer.jnlpmac} ^${computer.name}"
+                   command: 
+                   envVars:
+                     - envVar:
+                       key: "JENKINS_URL"
+                       value: "http://jenkins.jenkins.svc.cluster.local:8080/"
+                   image: "jenkins/inbound-agent:4.6-1"
+                   privileged: "false"
+                   resourceLimitCpu: 512m
+                   resourceLimitMemory: 512Mi
+                   resourceRequestCpu: 512m
+                   resourceRequestMemory: 512Mi
+                   runAsUser: 
+                   runAsGroup: 
+                   ttyEnabled: false
+                   workingDir: /home/jenkins
+                 idleMinutes: 0
+                 instanceCap: 2147483647
+                 label: "jenkins-jenkins-agent "
+                 nodeUsageMode: "NORMAL"
+                 podRetention: Never
+                 showRawYaml: true
+                 serviceAccount: "default"
+                 slaveConnectTimeoutStr: "100"
+                 yamlMergeStrategy: override
 
         
   # Optionally specify additional init-containers
