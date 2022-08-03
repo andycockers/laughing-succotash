@@ -363,9 +363,6 @@ controller:
        unclassified:
          gcpCredentialsProvider:
            project: "jenkins-test-project-284609"
-         location:
-          adminAddress: 
-          url: https://blane.uk.to
 
      security: |-
         security:
