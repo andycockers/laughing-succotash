@@ -337,8 +337,8 @@ controller:
   # etc.  Best reference is https://<jenkins_url>/configuration-as-code/reference.  The example below creates a welcome message:
   JCasC:
     enabled: true
-    defaultConfig: false
-    configScripts:
+    defaultConfig: true
+    configScripts: {}
 
     #Ignored if securityRealm is defined in controller.JCasC.configScripts and
     #ignored if controller.enableXmlConfig=true as controller.securityRealm takes precedence
