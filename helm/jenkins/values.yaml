@@ -353,7 +353,7 @@ controller:
       loggedInUsersCanDoAnything:
         allowAnonymousRead: false
 
-    configScripts: {}
+    configScripts:
 
     welcome-message: |-
         jenkins:
