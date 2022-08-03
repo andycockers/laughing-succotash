@@ -338,8 +338,6 @@ controller:
   JCasC:
     enabled: true
     defaultConfig: true
-    configScripts: {}
-
     #Ignored if securityRealm is defined in controller.JCasC.configScripts and
     #ignored if controller.enableXmlConfig=true as controller.securityRealm takes precedence
     securityRealm: |-
@@ -354,6 +352,8 @@ controller:
     authorizationStrategy: |-
       loggedInUsersCanDoAnything:
         allowAnonymousRead: false
+
+    configScripts: {}
 
     welcome-message: |-
         jenkins:
