@@ -75,4 +75,4 @@ security:
 unclassified:
   location:
     adminAddress: 
-    url: http://jenkins:8080jenkins
+    url: https://blane.uk.to
