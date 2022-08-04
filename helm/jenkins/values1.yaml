@@ -741,8 +741,8 @@ agent:
   #   readOnly: false
   # Pod-wide environment, these vars are visible to any container in the agent pod
   envVars:
-   - name: ERANU
-     value: /usr/local/bin
+    - name: ERANU
+      value: /usr/local/bin
   nodeSelector: {}
   # Key Value selectors. Ex:
   # jenkins-agent: v1
