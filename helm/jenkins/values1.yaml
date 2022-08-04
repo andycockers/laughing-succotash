@@ -69,9 +69,9 @@ controller:
   # initContainerEnv:
   #   - name: http_proxy
   #     value: "http://192.168.64.1:3128"
-  containerEnv:
-    - name: GOOGLE_APPLICATION_CREDENTIALS 
-      value: /var/jenkins_home/jenkins-test-project.json
+  #containerEnv:
+   # - name: GOOGLE_APPLICATION_CREDENTIALS 
+    #  value: /var/jenkins_home/jenkins-test-project.json
   # Set min/max heap here if needed with:
   # javaOpts: "-Xms512m -Xmx512m"
   # jenkinsOpts: ""
@@ -715,10 +715,10 @@ agent:
   #   claimName: mypvc
   #   mountPath: /var/myapp/mypvc
   #   readOnly: false
-   - type: Secret
-     defaultMode: "600"
-     mountPath: /var/jenkins_home
-     secretName: jenkins-serviceaccount
+  - type: Secret
+    defaultMode: "600"
+    mountPath: /var/jenkins_home
+    secretName: jenkins-serviceaccount
   # Pod-wide environment, these vars are visible to any container in the agent pod
 
   # You can define the workspaceVolume that you want to mount for this container
@@ -914,7 +914,7 @@ backup:
   # Ref: https://github.com/maorfr/kube-tasks#simple-backup
   extraArgs: []
   # Add existingSecret for AWS credentials
-  existingSecret: {}
+  existingSecret:
   ## Example for using an existing secret
    # jenkinsaws:
   ## Use this key for AWS access key ID
@@ -924,7 +924,7 @@ backup:
   # Add additional environment variables
    # jenkinsgcp:
   ## Use this key for GCP credentials
-     # gcpcredentials: credentials.json
+     gcpcredentials: jenkins-serviceaccount
   env: []
   # Example environment variable required for AWS credentials chain
   # - name: "AWS_REGION"
