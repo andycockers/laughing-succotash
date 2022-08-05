@@ -71,11 +71,7 @@ controller:
   #     value: "http://192.168.64.1:3128"
   containerEnv:
     - name: GOOGLE_APPLICATION_CREDENTIALS 
-      valueFrom:
-        secretKeyRef:
-          name: jenkins-serviceaccount
-          key: jenkins-test-project.json
-          optional: false
+      value: /var/jenkins_home/jenkins-test-project.json
   # Set min/max heap here if needed with:
   # javaOpts: "-Xms512m -Xmx512m"
   # jenkinsOpts: ""
@@ -719,10 +715,10 @@ agent:
   #   claimName: mypvc
   #   mountPath: /var/myapp/mypvc
   #   readOnly: false
-  - type: Secret
-    defaultMode: "600"
-    mountPath: /var/jenkins_home
-    secretName: jenkins-serviceaccount
+  #- type: Secret
+   # defaultMode: "600"
+    #mountPath: /var/jenkins_home
+    #secretName: jenkins-serviceaccount
   # Pod-wide environment, these vars are visible to any container in the agent pod
 
   # You can define the workspaceVolume that you want to mount for this container
@@ -846,12 +842,13 @@ persistence:
   accessMode: "ReadWriteOnce"
   size: "8Gi"
   volumes:
-  #  - name: nothing
-  #    emptyDir: {}
+    - name: jenkins-serviceaccount
+      secret:
+        secretName: jenkins-serviceaccount
   mounts:
-  #  - mountPath: /var/nothing
-  #    name: nothing
-  #    readOnly: true
+    - name: jenkins-serviceaccount
+      mountPath: "/var/jenkins_home" 
+      readOnly: true
 
 networkPolicy:
   # Enable creation of NetworkPolicy resources.
