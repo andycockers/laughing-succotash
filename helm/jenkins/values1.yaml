@@ -842,13 +842,13 @@ persistence:
   accessMode: "ReadWriteOnce"
   size: "8Gi"
   volumes:
-    - name: jenkins-serviceaccount
-      secret:
-        secretName: jenkins-serviceaccount
+     - name: jenkins-serviceaccount
+       secret:
+         secretName: jenkins-serviceaccount
   mounts:
-    - name: jenkins-serviceaccount
-      mountPath: "/var/jenkins_home" 
-      readOnly: true
+     - name: jenkins-serviceaccount
+       mountPath: "/var/jenkins_home" 
+       readOnly: true
 
 networkPolicy:
   # Enable creation of NetworkPolicy resources.
