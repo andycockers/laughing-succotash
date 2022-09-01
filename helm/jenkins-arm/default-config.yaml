@@ -77,6 +77,4 @@ unclassified:
   location:
     adminAddress: 
     url: https://blane.uk.to
-  gcpCredentialsProvider:
-    project: "jenkins-test-project-284609"
 

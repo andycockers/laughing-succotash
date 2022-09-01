@@ -69,9 +69,9 @@ controller:
   # initContainerEnv:
   #   - name: http_proxy
   #     value: "http://192.168.64.1:3128"
-  containerEnv:
-    - name: GOOGLE_APPLICATION_CREDENTIALS 
-      value: /var/jenkins_home/jenkins-test-project.json
+  # containerEnv:
+  #  - name: GOOGLE_APPLICATION_CREDENTIALS 
+  #    value: /var/jenkins_home/jenkins-test-project.json
   # Set min/max heap here if needed with:
   # javaOpts: "-Xms512m -Xmx512m"
   # jenkinsOpts: ""
