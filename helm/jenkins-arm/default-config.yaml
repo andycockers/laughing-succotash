@@ -65,6 +65,26 @@ jenkins:
           serviceAccount: "default"
           slaveConnectTimeoutStr: "100"
           yamlMergeStrategy: override
+  - hetzner:
+      credentialsId: "hetzner-api-token"
+      instanceCapStr: "10"
+      name: "hetzner"
+      serverTemplates:
+      - bootDeadline: 15
+        connector:
+          root:
+            connectionMethod: "public"
+            sshCredentialsId: "hetzner-key"
+        image: "81302760"
+        labelStr: "hetzner-cx11"
+        location: "fsn1"
+        name: "cx11"
+        network: "823122"
+        primaryIp: "default"
+        serverType: "cx11"
+        shutdownPolicy:
+          idle:
+            idleMinutes: 10
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: true
