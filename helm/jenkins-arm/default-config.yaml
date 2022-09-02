@@ -84,7 +84,7 @@ jenkins:
         serverType: "cx11"
         shutdownPolicy:
           idle:
-            idleMinutes: 10
+            idleMinutes: 5
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: true
