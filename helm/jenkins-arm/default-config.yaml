@@ -108,24 +108,24 @@ unclassified:
               remote: "git@github.com:andycockers/jenkins-dsl.git"
               traits:
               - "gitBranchDiscovery"
-test-jobs:
-  jobs:
-    - script: >                                     
-              pipelineJob('job-dsl-plugin') {
-                definition {
-                  cpsScm {
-                    scm {
-                      git {
-                        remote {
-                          url('https://github.com/jenkinsci/job-dsl-plugin.git')
-                          credentials('github')
-                        }
-                        branch('*/main')
-                      }
+ test-jobs:
+   jobs:
+     - script: >                                     
+               pipelineJob('job-dsl-plugin') {
+                 definition {
+                   cpsScm {
+                     scm {
+                       git {
+                         remote {
+                           url('https://github.com/jenkinsci/job-dsl-plugin.git')
+                           credentials('github')
+                         }
+                         branch('*/main')
+                       }
+                     }
+                     scriptPath("JenkinsFile")
+                     lightweight()
                     }
-                    scriptPath("JenkinsFile")
-                    lightweight()
-                  }
-                }
-              } 
+                 }
+     
 
