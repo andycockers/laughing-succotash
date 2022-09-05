@@ -126,6 +126,12 @@ jobs:
         disabled(false)
         concurrentBuild(false)
         steps {
+          dsl {
+            ignoreExisting(false)
+            removeAction("IGNORE")
+            removeViewAction("IGNORE")
+            lookupStrategy("JENKINS_ROOT")
+               }
           jobDsl {
             targets 'jenkins_folder_structure/jenkins_organisation.groovy'
             }
