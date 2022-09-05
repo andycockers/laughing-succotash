@@ -109,14 +109,6 @@ unclassified:
               traits:
               - "gitBranchDiscovery"
 jobs:
-  - script: >                                     
-      multibranchPipelineJob('configuration-as-code') {
-          branchSources {
-              git {
-                  id = 'configuration-as-code'
-                  remote('https://github.com/jenkinsci/configuration-as-code-plugin.git')
-              }
-          }
-      }
+  - url: https://raw.githubusercontent.com/andycockers/jenkins-dsl/main/jenkins_folder_structure/jenkins_organisation.groovy
      
 
