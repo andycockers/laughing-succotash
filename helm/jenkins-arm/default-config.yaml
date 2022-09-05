@@ -111,6 +111,7 @@ unclassified:
 jobs:
   - script: >
       job("dsl-create-folders2") {
+        label('hetzner-cx11')
         description()
         keepDependencies(false)
         scm {
