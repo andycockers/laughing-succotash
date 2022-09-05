@@ -97,4 +97,15 @@ unclassified:
   location:
     adminAddress: 
     url: https://blane.uk.to
+  globalLibraries:
+    libraries:
+    - name: "jenkins-dsl1"
+      retriever:
+        modernSCM:
+          scm:
+            git:
+              credentialsId: "github"
+              remote: "git@github.com:andycockers/jenkins-dsl.git"
+              traits:
+              - "gitBranchDiscovery"
 
