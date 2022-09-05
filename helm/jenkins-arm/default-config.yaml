@@ -110,7 +110,7 @@ unclassified:
               - "gitBranchDiscovery"
 jobs:
   - script: >
-      job("dsl-create-folders") {
+      job("dsl-create-folders2") {
         description()
         keepDependencies(false)
         scm {
