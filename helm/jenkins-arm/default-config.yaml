@@ -109,6 +109,24 @@ unclassified:
               traits:
               - "gitBranchDiscovery"
 jobs:
-  - url: https://raw.githubusercontent.com/andycockers/jenkins-dsl/main/jenkins_folder_structure/jenkins_organisation.groovy
-     
-
+  - script: >
+      job("dsl-create-folders") {
+        description()
+        keepDependencies(false)
+        scm {
+          git {
+            remote {
+              github("andycockers/jenkins-dsl", "https")
+              credentials("github")
+              }
+              branch("*/main")
+              }
+              }
+        disabled(false)
+        concurrentBuild(false)
+        steps {
+          jobDsl {
+            targets 'jenkins_folder_structure/jenkins_organisation.groovy'
+            }
+            }
+            }
