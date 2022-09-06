@@ -110,14 +110,14 @@ unclassified:
               - "gitBranchDiscovery"
 jobs:
   - script: >
-      job("dsl-create-folders2") {
+      job("dsl-create-jobs2") {
         label('hetzner-cx11')
         description()
         keepDependencies(false)
         scm {
           git {
             remote {
-              github("andycockers/jenkins-dsl", "https")
+              github("andycockers/jenkins-dsl", "ssh")
               credentials("github")
               }
               branch("*/main")
@@ -133,7 +133,7 @@ jobs:
             lookupStrategy("JENKINS_ROOT")
                }
           jobDsl {
-            targets 'jenkins_folder_structure/jenkins_organisation.groovy'
+            targets 'jobs_lib/*.groovy'
             }
             }
             }
