@@ -1,0 +1,7 @@
+---
+image: linuxserver/tvheadend
+tag: latest
+name: tvheadend
+namespace: tvheadend
+config_path: /data/tvh/config
+recordings_path: /data/tvh/recordings

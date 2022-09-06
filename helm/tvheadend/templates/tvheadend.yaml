@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels: 
+        app: {{ .Values.name }}
+    spec:
+      containers:
+      - name: {{ .Values.name }}
+        image: {{ .Values.image }}:{{ .Values.tag }}
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: recordings
+          mountPath: /recordings
+        env:
+        - name: PUID
+          key: 1000
+        - name: PGID
+          key: 1000
+        - name: TZ
+          key: Europe/London
+      volumes:
+      - hostPath:
+          path: {{ .Values.config_path }}
+        name: config
+      - hostPath:
+          path: {{ .Values.recordings_path }}
+        name: recordings
