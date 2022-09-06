@@ -19,7 +19,7 @@ controller:
   # Used for label app.kubernetes.io/component
   componentName: "jenkins-controller"
   image: "calmmopey/jenkins-arm64"
-  tag: "2.346.3-lts-5"
+  tag: "2.346.3-lts-6"
   imagePullPolicy: "Always"
   imagePullSecretName:
   # Optionally configure lifetime for controller-container
