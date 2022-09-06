@@ -109,6 +109,7 @@ unclassified:
           scm:
             git:
               credentialsId: "github"
+              id: "d32a0534-b0ce-497c-8c69-d4e40affdbd9"
               remote: "git@github.com:andycockers/jenkins-dsl.git"
               traits:
               - "gitBranchDiscovery"
