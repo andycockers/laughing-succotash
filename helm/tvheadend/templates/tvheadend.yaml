@@ -22,11 +22,11 @@ spec:
           mountPath: /recordings
         env:
         - name: PUID
-          key: 1000
+          value: 1000
         - name: PGID
-          key: 1000
+          value: 1000
         - name: TZ
-          key: Europe/London
+          value: Europe/London
       volumes:
       - hostPath:
           path: {{ .Values.config_path }}
