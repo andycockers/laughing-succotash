@@ -110,7 +110,7 @@ unclassified:
               - "gitBranchDiscovery"
 jobs:
   - script: >
-      job("dsl-create-jobs2") {
+      job("dsl-create-jobs") {
         label('hetzner-cx11')
         description()
         keepDependencies(false)
@@ -138,14 +138,14 @@ jobs:
             }
             }
   - script: >
-      job("ansible/dsl-create-folders3") {
+      job("dsl-create-folders") {
         label('hetzner-cx11')
         description()
         keepDependencies(false)
         scm {
           git {
             remote {
-              github("andycockers/jenkins-dsl", "https")
+              github("andycockers/jenkins-dsl", "ssh")
               credentials("github")
               }
               branch("*/main")
