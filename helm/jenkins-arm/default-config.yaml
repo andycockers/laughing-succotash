@@ -79,7 +79,7 @@ jenkins:
           id: "6089ef50-a74b-441f-88dc-92b10c1c7be1"
           label: "k8s-worker"
           name: "worker"
-          namespace: "jenkins"
+          namespace: "jenkins2"
           yamlMergeStrategy: "override"
   - hetzner:
       credentialsId: "hetzner-api-token"
