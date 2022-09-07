@@ -149,10 +149,6 @@ jobs:
         steps {
           jobDsl {
             targets 'jobs_lib/*.groovy'
-            ignoreExisting(false)
-            removeAction("IGNORE")
-            removeViewAction("IGNORE")
-            lookupStrategy("JENKINS_ROOT")
             }
             }
             }
