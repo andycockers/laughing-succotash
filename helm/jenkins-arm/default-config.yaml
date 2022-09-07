@@ -34,37 +34,53 @@ jenkins:
       - key: "jenkins/jenkins-jenkins-agent"
         value: "true"
       templates:
-        - name: "default"
-          namespace: "jenkins"
-          id: 804744a9a9fee3f02a5f7ed39fea229ddb0f98cc22e9ccdd10679f2d441b0813
-          containers:
-          - name: "jnlp"
-            alwaysPullImage: false
-            args: "^${computer.jnlpmac} ^${computer.name}"
-            command: 
+        - containers:
+          - args: "^${computer.jnlpmac} ^${computer.name}"
+            command: "sleep"
             envVars:
-              - envVar:
-                  key: "JENKINS_URL"
-                  value: "http://jenkins.jenkins.svc.cluster.local:8080/"
+            - envVar:
+                key: "JENKINS_URL"
+                value: "http://jenkins.jenkins.svc.cluster.local:8080/"
             image: "jenkins/inbound-agent:4.6-1"
-            privileged: "false"
-            resourceLimitCpu: 512m
-            resourceLimitMemory: 512Mi
-            resourceRequestCpu: 512m
-            resourceRequestMemory: 512Mi
-            runAsUser: 
-            runAsGroup: 
-            ttyEnabled: false
-            workingDir: /home/jenkins
-          idleMinutes: 0
-          instanceCap: 2147483647
-          label: "jenkins-jenkins-agent "
-          nodeUsageMode: "NORMAL"
-          podRetention: Never
-          showRawYaml: true
+            livenessProbe:
+              failureThreshold: 0
+              initialDelaySeconds: 0
+              periodSeconds: 0
+              successThreshold: 0
+              timeoutSeconds: 0
+            name: "jnlp"
+            resourceLimitCpu: "512m"
+            resourceLimitMemory: "512Mi"
+            resourceRequestCpu: "512m"
+            resourceRequestMemory: "512Mi"
+            workingDir: "/home/jenkins"
+          id: "804744a9a9fee3f02a5f7ed39fea229ddb0f98cc22e9ccdd10679f2d441b0813"
+          label: "jenkins-jenkins-agent"
+          name: "default"
+          namespace: "jenkins"
+          nodeUsageMode: NORMAL
+          podRetention: "never"
           serviceAccount: "default"
+          slaveConnectTimeout: 100
           slaveConnectTimeoutStr: "100"
-          yamlMergeStrategy: override
+          yamlMergeStrategy: "override"
+        - containers:
+          - args: "9999999"
+            command: "sleep"
+            image: "alpine"
+            livenessProbe:
+              failureThreshold: 0
+              initialDelaySeconds: 0
+              periodSeconds: 0
+              successThreshold: 0
+              timeoutSeconds: 0
+            name: "worker"
+            workingDir: "/home/jenkins/agent"
+          id: "6089ef50-a74b-441f-88dc-92b10c1c7be1"
+          label: "k8s-worker"
+          name: "worker"
+          namespace: "jenkins"
+          yamlMergeStrategy: "override"
   - hetzner:
       credentialsId: "hetzner-api-token"
       instanceCapStr: "10"
@@ -131,14 +147,12 @@ jobs:
         disabled(false)
         concurrentBuild(false)
         steps {
-          dsl {
+          jobDsl {
+            targets 'jobs_lib/*.groovy'
             ignoreExisting(false)
             removeAction("IGNORE")
             removeViewAction("IGNORE")
             lookupStrategy("JENKINS_ROOT")
-               }
-          jobDsl {
-            targets 'jobs_lib/*.groovy'
             }
             }
             }
