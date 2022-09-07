@@ -132,7 +132,7 @@ unclassified:
 jobs:
   - script: >
       job("dsl-create-jobs") {
-        label('hetzner-cx11')
+        label('k8s-worker')
         description()
         keepDependencies(false)
         scm {
@@ -154,7 +154,7 @@ jobs:
             }
   - script: >
       job("dsl-create-folders") {
-        label('hetzner-cx11')
+        label('k8s-worker')
         description()
         keepDependencies(false)
         scm {
