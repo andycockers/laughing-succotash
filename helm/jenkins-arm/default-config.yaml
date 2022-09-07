@@ -119,7 +119,8 @@ unclassified:
     url: https://blane.uk.to
   globalLibraries:
     libraries:
-    - name: "jenkins-dsl"
+    - defaultVersion: "main"
+      name: "jenkins-dsl"
       retriever:
         modernSCM:
           scm:
