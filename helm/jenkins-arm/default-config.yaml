@@ -101,6 +101,51 @@ jenkins:
         shutdownPolicy:
           idle:
             idleMinutes: 5
+  - baremetal:
+      cloudName: "oracle"
+      credentialsId: "oracle"
+      instanceCapStr: "1"
+      maxAsyncThreads: "50"
+      nextTemplateId: 1
+      templates:
+      - assignPublicIP: true
+        autoImageUpdate: false
+        availableDomain: "TGmT:UK-LONDON-1-AD-3"
+        compartmentId: "ocid1.tenancy.oc1..aaaaaaaagoprr4n2njwikrrqmbcv6ox7ttf5gb5xvxxy336hg4hgejkkidma"
+        doNotDisable: false
+        exportJenkinsEnvVars: false
+        idleTerminationMinutes: "30"
+        imageCompartmentId: "ocid1.tenancy.oc1..aaaaaaaagoprr4n2njwikrrqmbcv6ox7ttf5gb5xvxxy336hg4hgejkkidma"
+        imageId: "ocid1.image.oc1.uk-london-1.aaaaaaaah7r5ym7xfeeyjxin5y5mcsyumkto35zpsazduty4s5ylr5hqirda"
+        initScript: |-
+          sudo apt update
+          sudo apt install unzip python3-pip docker.io openjdk-11-jre -y
+          wget https://releases.hashicorp.com/terraform/1.2.9/terraform_1.2.9_linux_amd64.zip
+          unzip terraform_1.2.9_linux_amd64.zip
+          sudo cp terraform /usr/bin
+          wget https://releases.hashicorp.com/packer/1.8.3/packer_1.8.3_linux_amd64.zip
+          unzip packer_1.8.3_linux_amd64.zip
+          sudo cp packer /usr/bin
+          sudo pip3 install --no-input ansible
+          sudo usermod -aG docker ubuntu
+        initScriptTimeoutSeconds: 120
+        jenkinsAgentUser: "ubuntu"
+        labelString: "oracle-amd64"
+        mode: EXCLUSIVE
+        numExecutors: 1
+        remoteFS: "/home/ubuntu"
+        retryTimeoutMins: 10
+        shape: "VM.Standard.E2.1.Micro"
+        sshConnectTimeoutSeconds: "900"
+        sshCredentialsId: "oracle-key"
+        startTimeoutSeconds: "900"
+        stopOnIdle: false
+        subnetCompartmentId: "ocid1.tenancy.oc1..aaaaaaaagoprr4n2njwikrrqmbcv6ox7ttf5gb5xvxxy336hg4hgejkkidma"
+        subnetId: "ocid1.subnet.oc1.uk-london-1.aaaaaaaazm5mhuopce4aytixo55yzhxln6tolzk3wnafe7zz4crtql76xnla"
+        templateId: 0
+        usePublicIP: true
+        vcnCompartmentId: "ocid1.tenancy.oc1..aaaaaaaagoprr4n2njwikrrqmbcv6ox7ttf5gb5xvxxy336hg4hgejkkidma"
+        vcnId: "ocid1.vcn.oc1.uk-london-1.amaaaaaaqcshykqaumdi45fmnlk2ewwivhmhwz7m5dfmeecnthaqohbseapq"
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: true
