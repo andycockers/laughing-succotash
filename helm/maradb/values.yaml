@@ -3,4 +3,4 @@ image: linuxserver/mariadb
 tag: latest
 name: mariadb
 namespace: mariadb
-config_path: /data/mariadb
+config-path: /data/mariadb

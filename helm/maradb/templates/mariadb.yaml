@@ -16,7 +16,7 @@ spec:
       - name: {{ .Values.name }}
         image: {{ .Values.image }}:{{ .Values.tag }}
         volumeMounts:
-        - name: config_path
+        - name: config-path
           mountPath: /config
         env:
         - name: MYSQL_ROOT_PASSWORD
@@ -41,5 +41,5 @@ spec:
           value: Europe/London
       volumes:
       - hostPath:
-          path: {{ .Values.config_path }}
-        name: config_path
+          path: {{ .Values.config-path }}
+        name: config-path
