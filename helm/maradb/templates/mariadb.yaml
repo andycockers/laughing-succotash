@@ -41,5 +41,5 @@ spec:
           value: Europe/London
       volumes:
       - hostPath:
-          path: {{ .Values.config-path }}
+          path: {{ .Values.config_path }}
         name: config-path
