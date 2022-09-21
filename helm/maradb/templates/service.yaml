@@ -9,5 +9,5 @@ spec:
     app: {{ .Values.name }}
   ports:
     - protocol: TCP
-      port: 3600
-      targetPort: 3600
+      port: 3306
+      targetPort: 3306
