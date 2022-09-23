@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - wolfman.crabdance.com
+    - prom.uk.to
     secretName: prom-tls
   rules:
-  - host: wolfman.crabdance.com
+  - host: prom.uk.to
     http:
       paths:
       - path: /
