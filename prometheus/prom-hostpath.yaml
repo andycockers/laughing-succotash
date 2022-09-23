@@ -11,4 +11,4 @@ spec:
     - ReadOnlyMany
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /data/prometheus
+    path: /data/prom
