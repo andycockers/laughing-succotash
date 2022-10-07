@@ -175,6 +175,16 @@ unclassified:
               remote: "git@github.com:andycockers/jenkins-dsl.git"
               traits:
               - "gitBranchDiscovery"
+  gitSCM:
+    addGitTagAction: false
+    allowSecondFetch: false
+    createAccountBasedOnEmail: false
+    disableGitToolChooser: false
+    globalConfigEmail: "jenkins@nowhere.com"
+    globalConfigName: "Jenkins"
+    hideCredentials: false
+    showEntireCommitSummaryInChanges: false
+    useExistingAccountWithSameEmail: false
 jobs:
   - script: >
       job("dsl-create-jobs") {
