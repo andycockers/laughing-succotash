@@ -391,7 +391,7 @@ controller:
       # this must be > 1024:
       sshTcpPort: 1044
       # folder in the pod that should hold the collected dashboards:
-      folder: "/var/jenkins_home/casc_configs"
+      folder: "/usr/share/jenkins"
       # If specified, the sidecar will search for JCasC config-maps inside this namespace.
       # Otherwise the namespace in which the sidecar is running will be used.
       # It's also possible to specify ALL to search in all namespaces:
