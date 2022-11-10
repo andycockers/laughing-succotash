@@ -18,8 +18,8 @@ renderHelmLabels: true
 controller:
   # Used for label app.kubernetes.io/component
   componentName: "jenkins-controller"
-  image: "calmmopey/jenkins-plugins-jcasc"
-  tag: "2.361.3-lts-12"
+  image: "calmmopey/jenkins-plugins"
+  tag: "2.361.3-19"
   imagePullPolicy: "Always"
   imagePullSecretName:
   # Optionally configure lifetime for controller-container
