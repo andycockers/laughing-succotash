@@ -525,7 +525,7 @@ controller:
     # Additional labels to add to the ServiceMonitor object
     serviceMonitorAdditionalLabels: {}
     # Set a custom namespace where to deploy ServiceMonitor resource
-    serviceMonitorNamespace: monitor
+    #serviceMonitorNamespace: monitor
     scrapeInterval: 60s
     # This is the default endpoint used by the prometheus plugin
     scrapeEndpoint: /prometheus
@@ -536,7 +536,7 @@ controller:
     # The `groups` root object is added by default, simply add the rule entries
     alertingrules: []
     # Set a custom namespace where to deploy PrometheusRule resource
-    prometheusRuleNamespace: "monitor"
+    prometheusRuleNamespace: ""
 
   # Can be used to disable rendering controller test resources when using helm template
   testEnabled: true
